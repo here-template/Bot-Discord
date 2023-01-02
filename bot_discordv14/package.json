@@ -7,7 +7,7 @@
     "dev": "nodemon index.js",
     "start": "node idnex.js"
   },
-  "author": "youritch",
+  "author": "youritch and cleboost",
   "license": "ISC",
   "dependencies": {
     "@discordjs/opus": "^0.8.0",
