@@ -26,3 +26,4 @@
   - les commande marqué comme devOnly: true, nessecite d'être devellopeur pour être executer, inscrit dans le tableur dev de config.js
   - les configs sont mis dans le cache du clien, pour y acceder : client.config
   - le cooldown est en seconde, mais attention il se reset à chaque redémarage de bot, il est désactivé pour si la commande est en devOnly
+  - vous pouvez lancer le bot avec *npm run dev*, dans ce cas le bot se redémare à chaque save que vous faite, sinon utiliser *node index.js*

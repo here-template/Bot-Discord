@@ -22,8 +22,8 @@ client.on("interactionCreate", async (interaction) => {
         //Execution vérification pour coldown
         if (cmd.cooldown && !cmd.devOnly) {
             if (cooldown.has(`${cmd.name}${interaction.user.id}`)) {
-                const t = Math.floor((cooldown.get(`${cmd.name}${interaction.user.id}`)/1000));
-                return interaction.reply({content: "Il ya un cooldown, il reste "+t+"s !"});
+                const t = Math.floor((cooldown.get(`${cmd.name}${interaction.user.id}`)-Date.now())/1000);
+                return interaction.reply({content: "Il ya un cooldown, il reste **"+t+"s** !"});
             }
             cooldown.set(`${cmd.name}${interaction.user.id}`, Date.now() + cmd.cooldown);
             setTimeout(() => {cooldown.delete(`${cmd.name}${interaction.user.id}`)}, cmd.cooldown);

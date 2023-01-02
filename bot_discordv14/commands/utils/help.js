@@ -10,7 +10,8 @@ module.exports = {
     botPermissions: ["SendMessages"],
     options: [
         {
-            name: "command",
+            name: "commande",
+            description: "La commande dont vous voulez voire les informations.",
             type: 3,
             required: false, 
             autocomplete: true
@@ -22,8 +23,8 @@ module.exports = {
      * @param {Client} client
     */
     run: async (client, interaction) => {
-        const cmdName = interaction.options.getString("command");
-
+        const cmdName = interaction.options.getString("commande");
+        console.log(cmdName);
         if (!cmdName) {
             const noArgsEmbed = new EmbedBuilder()
                 .setColor('#E53935')
@@ -42,7 +43,7 @@ module.exports = {
         let usage = '/'+cmd.name, opts="";
         if (cmd.options) {
             for (const i in cmd.options) {
-                usage+=' '+(cmd.options[i].required ? '<' : '[')+cmd.name+(cmd.options[i].required ? '>' : ']');
+                usage+=' '+(cmd.options[i].required ? '<' : '[')+cmd.options[i].name+(cmd.options[i].required ? '>' : ']');
                 opts+=cmd.options[i].name+' : '+cmd.options[i].description+'\n';
             }
         }
@@ -80,7 +81,6 @@ module.exports = {
         if (!choices) return;
         const filtered = choices.filter(c => c.includes(focusedOptions.value.toLowerCase()));
         const filterLimite = filtered.slice(0, 15);
-        await interaction.respond(filterLimite.map(c => ({ name: '/'+c, value: c })));
-        //api.user.text(interaction.locale,"commandes",c)
+        await interaction.respond(filterLimite.map(c => ({ name: c, value: c })));
     }
 }

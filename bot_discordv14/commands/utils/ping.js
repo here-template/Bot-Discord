@@ -2,6 +2,7 @@ const { CommandInteraction, Client } = require("discord.js");
 
 module.exports = {
     name: "ping",
+    description: "Permet d'obtenir la latence du bot.",
     devOnly: false,
     cooldown: 30,
     category: "utils",
@@ -12,6 +13,6 @@ module.exports = {
      * @param {Client} client
     */
     run: async (client, interaction) => {
-        interaction.reply({content: `Ping :\`${client.ws.ping}ms\``})
+        interaction.reply({content: `Le bot à une latence de :\`${client.ws.ping}ms\``})
     }
 }
