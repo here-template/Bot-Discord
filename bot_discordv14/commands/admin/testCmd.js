@@ -12,7 +12,7 @@ module.exports = {
    * @param {Client} client
    */
   run: async (client, interaction) => {
-    //await interaction.deferReply(); //si il ya un test long à faire
+    await interaction.deferReply(); //si il ya un test long à faire
     return interaction.editReply("Aucun test de codé !");
   },
 };
