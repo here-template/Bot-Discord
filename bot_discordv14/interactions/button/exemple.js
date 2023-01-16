@@ -1,7 +1,6 @@
 module.exports = {
-    name: "customId_bouton",
-    admin: false,
-    runInteraction: async (client, interaction) => {
-        // Le code ici
-    }
-}
+	customID: "customId_bouton",
+	runInteraction: async (client, interaction) => {
+		// Le code ici
+	},
+};
