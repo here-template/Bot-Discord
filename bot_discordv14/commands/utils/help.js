@@ -4,8 +4,6 @@ const commandFolder = readdirSync("./commands");
 
 module.exports = {
 	name: "help",
-	userPermissions: [],
-	botPermissions: [],
 	options: [
 		{
 			name: "commande",

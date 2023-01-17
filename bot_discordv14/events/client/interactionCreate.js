@@ -12,34 +12,34 @@ client.on("interactionCreate", async (interaction) => {
 		const cmd = client.commands.get(interaction.commandName);
 		if (!cmd) return;
 		//Vérifie si l'utilisateur est owner en cas de commande admin
-		if (cmd.category == "admin" && !config.owner.includes(interaction.user.id)) {
-			return interaction.reply({ content: "Vous êtes pas admin !", ephemeral: true });
+		if (cmd.category === "admin" && !config.owner.includes(interaction.user.id)) {
+			return interaction.reply({ content: "Vous êtes pas administrateur du bot !", ephemeral: true });
 		}
 		//Vérifie si l'utilisateur est owner en cas de commande dev only
 		if (cmd.devOnly && !config.dev.includes(interaction.user.id)) {
 			return interaction.reply({ content: "Commande en dévellopement !", ephemeral: true });
 		}
+		//Vérifie les permissions :
+		if (cmd.userPermissions || cmd.botPermissions) {
+			//Vérifie les permissions du bot pour executer le code
+			if (!interaction.guild.members.cache.get(client.user.id).permissions.has(PermissionsBitField.resolve(cmd.botPermissions || []))) {
+				return interaction.reply({ content: "Le bot à besoin des permissions suivante `" + cmd.botPermissions.join(", ")+"`", ephemeral: true });
+			}
+			//Vérifie les permissions du bot pour executer le code
+			if (!interaction.guild.members.cache.get(interaction.user.id).permissions.has(PermissionsBitField.resolve(cmd.userPermissions || []))) {
+				return interaction.reply({ content: "Vous avez à besoin des permissions suivante `" + cmd.userPermissions.join(" ")+"`", ephemeral: true });
+			}
+		}
 		//Execution vérification pour coldown
 		if (cmd.cooldown && !cmd.devOnly) {
 			if (cooldown.has(`${cmd.name}${interaction.user.id}`)) {
 				const t = Math.floor((cooldown.get(`${cmd.name}${interaction.user.id}`) - Date.now()) / 1000);
-				return interaction.reply({ content: "Il ya un cooldown, il reste **" + t + "s** !" });
+				return interaction.reply({ content: "Cette commande à un cooldown, il reste **" + t + "s** !" });
 			}
 			cooldown.set(`${cmd.name}${interaction.user.id}`, Date.now() + cmd.cooldown);
 			setTimeout(() => {
 				cooldown.delete(`${cmd.name}${interaction.user.id}`);
 			}, cmd.cooldown);
-		}
-		//Vérifie les permissions :
-		if (cmd.userPermissions || cmd.botPermissions) {
-			//Vérifie les permissions du bot pour executer le code
-			if (!interaction.guild.members.cache.get(client.user.id).permissions.has(PermissionsBitField.resolve(cmd.botPermissions || []))) {
-				return interaction.reply({ content: "Le bot à besoin des permissions suivante " + cmd.botPermissions, ephemeral: true });
-			}
-			//Vérifie les permissions du bot pour executer le code
-			if (!interaction.guild.members.cache.get(interaction.user.id).permissions.has(PermissionsBitField.resolve(cmd.userPermissions || []))) {
-				return interaction.reply({ content: "Vous avez à besoin des permissions suivante " + cmd.userPermissions, ephemeral: true });
-			}
 		}
 		//Execute le code de la commande
 		try {

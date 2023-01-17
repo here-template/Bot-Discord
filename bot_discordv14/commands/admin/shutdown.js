@@ -3,8 +3,6 @@ const { CommandInteraction, Client } = require("discord.js");
 
 module.exports = {
 	name: "stop",
-	userPermissions: [],
-	botPermissions: [],
 	description: "Une commande pour stopper le bot.",
 	/**
 	 * @param {CommandInteraction} interaction

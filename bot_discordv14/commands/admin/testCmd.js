@@ -2,9 +2,8 @@ const { CommandInteraction, Client} = require("discord.js");
 
 module.exports = {
   name: "test",
-  userPermissions: [],
-  botPermissions: [],
   description: "Une commande de test",
+  devOnly: true,
   /**
    * @param {CommandInteraction} interaction
    * @param {Client} client

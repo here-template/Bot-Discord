@@ -4,8 +4,6 @@ module.exports = {
 	name: "ping",
 	description: "Permet d'obtenir la latence du bot.",
 	cooldown: 30,
-	userPermissions: [],
-	botPermissions: [],
 	/**
 	 * @param {CommandInteraction} interaction
 	 * @param {Client} client
