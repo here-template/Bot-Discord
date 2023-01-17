@@ -29,7 +29,7 @@
   - vous pouvez lancer le bot avec *npm run dev*, dans ce cas le bot se redémare à chaque save que vous faite, sinon utiliser *node index.js*
 
  ## Options de commandes :
-  - ```userPermissions: [""],``` les permissions supplémentaire nessecaire à l'utilisateur *(par defaut: send message)*
-  - ```botPermissions: [""],``` les permissions supplémentaire nessecaire au bot *(par defaut: send message)*
+  - ```userPermissions: [""],``` les permissions supplémentaire nessecaire à l'utilisateur *(par defaut: ```sendMessages```)*
+  - ```botPermissions: [""],``` les permissions supplémentaire nessecaire au bot *(par defaut: ```sendMessages```)*
   - ```devOnly: true,``` *(par défaut: false)*
-  - ```cooldown: t,``` t= les temps entre 2 executions de la commande, en seconde *(par défaut: 0s)*
+  - ```cooldown: t,``` t= les temps entre 2 executions de la commande, en seconde *(par défaut: ```0s```)*
