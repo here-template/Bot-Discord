@@ -25,17 +25,19 @@ const client = new Client({
 	],
 	partials: [Partials.Channel, Partials.User, Partials.Reaction, Partials.Message, Partials.GuildMember, Partials.GuildScheduledEvent, Partials.ThreadMember],
 });
+
 console.log(greenBright.bold.underline("Lancement du bot :"));
+//mise en cahche des configs
+client.config = require("./config.js");
+module.exports.client = client;
+//prepartion pour les handlers
 client.commands = new Collection();
 client.btn = new Collection();
 client.select = new Collection();
 client.modal = new Collection();
-
-client.config = require("./config.js");
-module.exports.client = client;
-
+//lancement des handlers :
 ["command", "event", "button", "select", "modal"].forEach(async (handler) => {
 	await require(`./handlers/${handler}`)(client);
 });
-
+//connection du bot
 client.login(config.token);

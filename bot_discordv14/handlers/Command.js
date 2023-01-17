@@ -23,8 +23,8 @@ module.exports = (client) => {
 				//la categorie
 				command.category = dir;
 				//les permission par défaut :
-				command.userPermissions.push("SendMessage");
-				command.botPermissions.push("SendMessage");
+				command.userPermissions.push("SendMessages");
+				command.botPermissions.push("SendMessages");
 				//upload dans le bot
 				client.commands.set(command.name, command);
 				console.log(yellow("  > " + command.name));

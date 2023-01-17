@@ -1,5 +1,5 @@
 module.exports = {
-	customID: "exButton",
+	customID: "exSelect",
 	runInteraction: async (client, interaction) => {
 		// Le code ici
 	},
