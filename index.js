@@ -1,6 +1,6 @@
 const { Client, GatewayIntentBits, Partials, Collection } = require("discord.js");
 const { greenBright } = require("cli-color");
-const env = require('dotenv')
+const env = require('dotenv').config()
 const config = require("./config");
 const client = new Client({
 	intents: [
