@@ -84,5 +84,5 @@ client.on("interactionCreate", async (interaction) => {
 		}
 		return modal.runInteraction(client, interaction);
 	}
-	return interaction.reply({ content: "il ya une une erreur !", ephemeral: true });
+	return interaction.reply({ content: "Il y a une une erreur !", ephemeral: true });
 });
