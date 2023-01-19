@@ -1,7 +1,6 @@
 const { Client, GatewayIntentBits, Partials, Collection } = require("discord.js");
 const { greenBright } = require("cli-color");
-const env = require('dotenv').config()
-const config = require("./config");
+const env = require("dotenv").config();
 const client = new Client({
 	intents: [
 		GatewayIntentBits.DirectMessageReactions,
@@ -43,6 +42,5 @@ client.modal = new Collection();
 ["command", "event", "button", "select", "modal"].forEach(async (handler) => {
 	await require(`./handlers/${handler}`)(client);
 });
-
 //connection du bot
-client.login(env.TOKEN);
+client.login(process.env.TOKEN);
