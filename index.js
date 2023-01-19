@@ -1,5 +1,6 @@
 const { Client, GatewayIntentBits, Partials, Collection } = require("discord.js");
 const { greenBright } = require("cli-color");
+const env = require('dotenv')
 const config = require("./config");
 const client = new Client({
 	intents: [
@@ -27,17 +28,21 @@ const client = new Client({
 });
 
 console.log(greenBright.bold.underline("Lancement du bot :"));
-//mise en cahche des configs
+
+//Mise en cache de la config :
 client.config = require("./config.js");
 module.exports.client = client;
-//prepartion pour les handlers
+
+//Création des collèection discords pour les handlers :
 client.commands = new Collection();
 client.btn = new Collection();
 client.select = new Collection();
 client.modal = new Collection();
-//lancement des handlers :
+
+//Chargement en mémoire des handlers :
 ["command", "event", "button", "select", "modal"].forEach(async (handler) => {
 	await require(`./handlers/${handler}`)(client);
 });
+
 //connection du bot
-client.login(config.token);
+client.login(env.TOKEN);
