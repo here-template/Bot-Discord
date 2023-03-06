@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
-    "start": "node idnex.js"
+    "start": "node index.js"
   },
   "author": "youritch and cleboost",
   "license": "ISC",
