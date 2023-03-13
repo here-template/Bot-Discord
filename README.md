@@ -36,7 +36,7 @@
   - ```cooldown: t,``` t= les temps entre 2 executions de la commande, en seconde *(par défaut: ```0s```)*
 
 ## Instalation :
-- Faire un fork du repo
+- Faire un fork du reposite
 - Ouvrir le dossier du project
 - Installer les librairies `npm i`
 - Mettre le token de votre bot dans le fichier `.env`
