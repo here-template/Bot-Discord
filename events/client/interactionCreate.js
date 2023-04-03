@@ -23,11 +23,11 @@ client.on("interactionCreate", async (interaction) => {
 		if (cmd.userPermissions || cmd.botPermissions) {
 			//Vérifie les permissions du bot pour executer le code
 			if (!interaction.guild.members.cache.get(client.user.id).permissions.has(PermissionsBitField.resolve(cmd.botPermissions || []))) {
-				return interaction.reply({ content: "Le bot à besoin des permissions suivante `" + cmd.botPermissions.join(", ")+"`", ephemeral: true });
+				return interaction.reply({ content: "Le bot à besoin des permissions suivante `" + cmd.botPermissions.join(", ") + "`", ephemeral: true });
 			}
 			//Vérifie les permissions du bot pour executer le code
 			if (!interaction.guild.members.cache.get(interaction.user.id).permissions.has(PermissionsBitField.resolve(cmd.userPermissions || []))) {
-				return interaction.reply({ content: "Vous avez à besoin des permissions suivante `" + cmd.userPermissions.join(" ")+"`", ephemeral: true });
+				return interaction.reply({ content: "Vous avez à besoin des permissions suivante `" + cmd.userPermissions.join(" ") + "`", ephemeral: true });
 			}
 		}
 		//Execution vérification pour coldown
