@@ -13,7 +13,7 @@ module.exports = (client) => {
 				if (command.cooldown) {
 					command.cooldown *= 1000;
 					if (command.cooldown > 2147483646) {
-						command.cooldown = 2147483647; //ne peut pas dépasser cette valeur
+						command.cooldown = 2147483646; //ne peut pas dépasser cette valeur
 					};
 				};
 				//si pas de devOnly, par defaut false
@@ -31,6 +31,7 @@ module.exports = (client) => {
 				};
 				command.userPermissions.push("SendMessages");
 				command.botPermissions.push("SendMessages");
+				//à faire : vérif taille description
 				//upload dans le bot
 				client.commands.set(command.name, command);;
 				console.log(yellow("  > " + command.name));
