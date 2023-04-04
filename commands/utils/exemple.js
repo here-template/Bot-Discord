@@ -13,6 +13,6 @@ module.exports = {
 	 */
 	run: async (client, interaction) => {
 		//le code de la commande ici
-		interaction.reply({ content: "Ceci est une commande **d'exemple** __" + interaction.user.username + "__ !" });
+		return interaction.reply({ content: `Ceci est une commande **d'exemple** __${interaction.user.username}__ !` });
 	},
 };

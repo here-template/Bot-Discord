@@ -34,7 +34,7 @@ module.exports = (client) => {
 				//à faire : vérif taille description
 				//upload dans le bot
 				client.commands.set(command.name, command);;
-				console.log(yellow("  > " + command.name));
+				console.log(yellow(`  > ${command.name}`));
 			};
 		});
 	});

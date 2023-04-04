@@ -10,7 +10,7 @@ module.exports = {
 	 */
 	run: async (client, interaction) => {
 		interaction.reply("Shutdown du bot !");
-		console.log(redBright.bold(">> Shutdown (par " + interaction.user.username + ")! <<"));
+		console.log(redBright.bold(`>> Shutdown (par ${interaction.user.username})! <<`));
 		return client.destroy();
 	},
 };
