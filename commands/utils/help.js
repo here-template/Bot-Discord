@@ -24,7 +24,7 @@ module.exports = {
 			const noArgsEmbed = new EmbedBuilder().setColor("#E53935").addFields([{ name: "La liste des commandes :", value: "Une liste de toutes les catégories disponibles et leurs commandes.\nPour plus d'informations sur une commande, tapez `/help <command>`" }]);
 
 			for (const category of commandFolder) {
-				if (category != "admin") {
+				if (category != "admin"  || client.config.owner.includes(interaction.user.id)) {
 					noArgsEmbed.addFields([
 						{
 							name: `__> ${category.replace(/(^\w|\s\w)/g, (firstLetter) => firstLetter.toUpperCase())} :__`,
