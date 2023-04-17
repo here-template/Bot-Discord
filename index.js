@@ -38,9 +38,18 @@ client.btn = new Collection();
 client.select = new Collection();
 client.modal = new Collection();
 
-//Chargement en mémoire des handlers :
+if (client.config.bdd) {
+	client.bdd.host = "";
+	client.bdd.port = "";
+	client.bdd.user = "";
+	client.bdd.password = "";
+	client.bdd.database = ""; //Vide pour port 3306 par défaut
+	require("./api/bdd.js");
+}
+
+// Chargement en mémoire des handlers :
 ["command", "event", "button", "select", "modal"].forEach(async (handler) => {
 	await require(`./handlers/${handler}`)(client);
 });
-//connection du bot
+// Connection du bot
 client.login(process.env.TOKEN);
