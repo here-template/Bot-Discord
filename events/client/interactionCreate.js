@@ -50,14 +50,11 @@ client.on("interactionCreate", async (interaction) => {
 			console.log(err);
 			return interaction.reply({ content: "il ya une une erreur !", ephemeral: true });
 		}
-		//#########################################################################################################
-		//auto complete
-	} else if (interaction.type === 4) {
+	} else if (interaction.type === 4) {//Si c'est un autocomplete
 		const cmd = client.commands.get(interaction.commandName);
 		if (!cmd || !cmd.runAutocomplete) return;
 		else return cmd.runAutocomplete(client, interaction);
-		//buttons :
-	} else if (interaction.isButton()) {
+	} else if (interaction.isButton()) {//Si c'est un bouton
 		const button = client.btn.get(interaction.customId);
 		if (!button) return;
 		//Vérifie si l'utilisateur est owner en cas de commande admin
@@ -66,7 +63,7 @@ client.on("interactionCreate", async (interaction) => {
 		}
 		return button.runInteraction(client, interaction);
 		//selects
-	} else if (interaction.isSelectMenu()) {
+	} else if (interaction.isStringSelectMenu()) {
 		const selectMenu = client.select.get(interaction.customId);
 		if (!selectMenu) return;
 		//Vérifie si l'utilisateur est owner en cas de commande admin
@@ -74,8 +71,7 @@ client.on("interactionCreate", async (interaction) => {
 			return interaction.reply({ content: "Vous n'etes pas admin du bot !", ephemeral: true });
 		}
 		return selectMenu.runInteraction(client, interaction);
-		//modal
-	} else if (interaction.isModalSubmit()) {
+	} else if (interaction.isModalSubmit()) { //Si c'est une modal
 		const modal = client.modal.get(interaction.customId);
 		if (!modal) return;
 		//Vérifie si l'utilisateur est owner en cas de commande admin
