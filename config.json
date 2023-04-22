@@ -3,5 +3,12 @@
 	"owner": ["id_discord_user"],
 	"dev": ["id_discord_user"],
 	"invite": "Invitation discord",
-	"bdd": false
+	"bdd": {
+		"enable": true,
+		"host": "localhost",
+		"user": "root",
+		"password": "password",
+		"database": "database",
+		"port": 3306
+	}
 }

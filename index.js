@@ -1,6 +1,8 @@
 const { Client, GatewayIntentBits, Partials, Collection } = require("discord.js");
 const { greenBright } = require("cli-color");
 const env = require("dotenv").config();
+const configFile = require("./config.json");
+const { config } = require("dotenv");
 const client = new Client({
 	intents: [
 		GatewayIntentBits.DirectMessageReactions,
@@ -29,7 +31,7 @@ const client = new Client({
 console.log(greenBright.bold.underline("Lancement du bot :"));
 
 //Mise en cache de la config :
-client.config = require("./config.js");
+client.config = configFile;
 module.exports.client = client;
 
 //Création des collèection discords pour les handlers :
@@ -38,12 +40,7 @@ client.btn = new Collection();
 client.select = new Collection();
 client.modal = new Collection();
 
-if (client.config.bdd) {
-	client.bdd.host = "";
-	client.bdd.port = "";
-	client.bdd.user = "";
-	client.bdd.password = "";
-	client.bdd.database = ""; //Vide pour port 3306 par défaut
+if (configFile.bdd.enable) {
 	require("./api/bdd.js");
 }
 
@@ -52,4 +49,5 @@ if (client.config.bdd) {
 	await require(`./handlers/${handler}`)(client);
 });
 // Connection du bot
+
 client.login(process.env.TOKEN);

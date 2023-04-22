@@ -1,22 +1,22 @@
 const clc = require("cli-color");
 const mysql = require("mysql");
-const config = require("./../index").client.config;
+const config = require("../config.json");
 
 async function connectionPool(msg = true) {
 	let pool = mysql.createPool({
 		host: config.bdd.host, // Adresse de la base de donnée
-		port: config.bdd.port ? config.bdd.port : 3306, // Port de la base de donnée
+		port: config.bdd.port, // Port de la base de donnée
 		user: config.bdd.user, // Nom d'utilisateur de la base de donnée
 		password: config.bdd.password, // Mot de passe de la base de donnée
 		database: config.bdd.database, // Nom de la base de donnée
 		connectionLimit: 30, // Nombre de connections simultanés
 	});
 	// Envoie le retour d'un message en fonction de l'etat de la base de donnée
-	pool.query("SELECT name FROM media WHERE name = 'good_start'", function (err, result) { // Test de connection à la base de donnée
+	pool.query("SELECT test FROM test WHERE test = 'good_start'", function (err) { // Test de connection à la base de donnée (bien vérifier le wiki)
 		if (err) {
 			console.log(clc.redBright("Erreur connection base de données.\n" + err));
 			console.log(clc.redBright.bold(">> Shutdown ! <<"));
-			const client = require("../index").client; // On récupère le client
+			const client = require("../index").client;
 			return client.destroy(); // Shutdown le bot si erreur de connection
 		}
 		if (msg) {
@@ -28,7 +28,6 @@ async function connectionPool(msg = true) {
 
 // Avec sa plus besoin de test dans index.js
 const bddPool = connectionPool(true);
-
 module.exports.pool = bddPool;
 
 /**
