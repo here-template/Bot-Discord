@@ -6,9 +6,7 @@ const clc = require("cli-color");
 
 client.on("interactionCreate", async (interaction) => {
 	if (interaction.user.bot) return console.log(`Le bot ${interaction.user.username} a tenté de faire une commande !`);
-	// Vérifie si l'interaction est une commande
-	if (interaction.type === InteractionType.ApplicationCommand) {
-		//#########################################################################################################
+	if (interaction.type === InteractionType.ApplicationCommand) { //Si c'est une commande
 		const cmd = client.commands.get(interaction.commandName);
 		if (!cmd) return;
 		//Vérifie si l'utilisateur est owner en cas de commande admin
