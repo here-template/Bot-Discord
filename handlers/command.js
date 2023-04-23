@@ -20,6 +20,11 @@ module.exports = (client) => {
 				if (!command.devOnly) {
 					command.devOnly = false;
 				};
+
+				if (!command.mpLock) {
+					//@Youritch : Besoins de toi pour la suite
+				};
+
 				//la categorie
 				command.category = dir;
 				//les permission par défaut :
