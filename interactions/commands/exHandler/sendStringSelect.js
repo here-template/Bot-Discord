@@ -2,7 +2,7 @@ const { CommandInteraction, Client, ActionRowBuilder, StringSelectMenuBuilder} =
 
 module.exports = {
   name: "sendstringselect",
-  description: "Envoie un string select de test", 
+  description: "Envoie un string selects de test",
   /**
    * @param {CommandInteraction} interaction
    * @param {Client} client
@@ -11,7 +11,7 @@ module.exports = {
     const row = new ActionRowBuilder()
       .addComponents(
         new StringSelectMenuBuilder()
-        .setCustomId("sendstringselect") //Cutom ID du bouton pour interactions/button/sendStringModal.js
+        .setCustomId("sendstringselect") //Cutom ID du bouton pour interactions/buttons/sendStringModal.js
         .setPlaceholder("Choisissez une option")
         .addOptions([
           {

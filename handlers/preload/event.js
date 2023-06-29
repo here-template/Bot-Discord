@@ -7,7 +7,7 @@ module.exports = (client) => {
 		const files = fs.readdirSync(`./events/${dirs}/`).filter((file) => file.endsWith(".js"));
 
 		files.forEach((evt) => {
-			require(`../events/${dirs}/${evt}`);
+			require(`../../events/${dirs}/${evt}`);
 			console.log(blue(`  > ${evt}`));
 		});
 	});

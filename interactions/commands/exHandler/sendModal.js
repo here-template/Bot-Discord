@@ -8,7 +8,7 @@ module.exports = {
    * @param {Client} client
    */
   run: async (client, interaction) => {
-    // Creation du modal
+    // Creation du modals
       const modal = new ModalBuilder()
       .setCustomId('testmodal')
       .setTitle('My Modal');
@@ -24,14 +24,14 @@ module.exports = {
       .setLabel("What's some of your favorite hobbies?")
       .setStyle(TextInputStyle.Paragraph);
 
-    // Convertion des input en components pour le modal
+    // Convertion des input en components pour le modals
     const firstActionRow = new ActionRowBuilder().addComponents(favoriteColorInput);
     const secondActionRow = new ActionRowBuilder().addComponents(hobbiesInput);
 
-    // Ajout des components au modal
+    // Ajout des components au modals
     modal.addComponents(firstActionRow, secondActionRow);
 
-    // Affichage du modal au user
+    // Affichage du modals au user
     await interaction.showModal(modal);
   },
 };

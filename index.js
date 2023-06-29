@@ -32,22 +32,24 @@ console.log(greenBright.bold.underline("Lancement du bot :"));
 
 //Mise en cache de la config :
 client.config = configFile;
-module.exports.client = client;
 
-//Création des collèection discords pour les handlers :
-client.commands = new Collection();
-client.btn = new Collection();
-client.select = new Collection();
-client.modal = new Collection();
-
+//config bdd :
 if (configFile.bdd.enable) {
 	require("./api/bdd.js");
 }
 
-// Chargement en mémoire des handlers :
-["command", "event", "button", "select", "modal"].forEach(async (handler) => {
-	await require(`./handlers/${handler}`)(client);
-});
-// Connection du bot
+//Création des collection discords pour les handlers :
+client.commands = new Collection();
+client.buttons = new Collection();
+client.selects = new Collection();
+client.modals = new Collection();
 
+
+//Chargement en mémoire des handlers :
+["command", "event", "button", "select", "modal"].forEach(async (handler) => {
+	await require(`./handlers/preload/${handler}`)(client);
+});
+
+//Connection du bot :
 client.login(process.env.TOKEN);
+module.exports.client = client;

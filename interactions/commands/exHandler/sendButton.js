@@ -11,7 +11,7 @@ module.exports = {
     const row = new ActionRowBuilder()
       .addComponents(
         new ButtonBuilder()
-        .setCustomId("sendbutton") //Cutom ID du bouton pour interactions/button/sendButton.js
+        .setCustomId("sendbutton") //Cutom ID du bouton pour interactions/buttons/sendButton.js
         .setLabel("Test")
         .setStyle(ButtonStyle.Primary) //Style du bouton avoir sur https://discordjs.guide/message-components/buttons.html#button-styles
       )

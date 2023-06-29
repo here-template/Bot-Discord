@@ -3,16 +3,17 @@ const { cyan } = require("cli-color");
 
 module.exports = (client) => {
 	console.log(cyan.underline("Buttons chargés :"));
-	const files = fs.readdirSync(`./interactions/button/`).filter((file) => file.endsWith(".js"));
+	const files = fs.readdirSync(`./interactions/buttons/`).filter((file) => file.endsWith(".js"));
+	console.log(files);
 	if (!files || files.length <= 0);
 	files.forEach((file) => {
-		const button = require(`../interactions/button/${file}`);
+		const button = require(`../../interactions/buttons/${file}`);
 		if (button) {
 			//si pas spécifié alors par defaut false
 			if (!button.admin) {
 				button.admin = false;
 			}
-			client.btn.set(button.customID, button);
+			client.buttons.set(button.customID, button);
 			console.log(cyan(`  > ${button.customID}`));
 		}
 	});
