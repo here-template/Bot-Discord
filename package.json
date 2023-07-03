@@ -12,7 +12,7 @@
   "dependencies": {
     "@discordjs/opus": "^0.8.0",
     "cli-color": "2.0.3",
-    "discord.js": "^14.6.0",
+    "discord.js": "^14.11.0",
     "dotenv": "16.0.3",
     "mysql": "^2.18.1"
   },
