@@ -34,5 +34,5 @@ module.exports = (client, interaction) => {
 			cooldown.delete(`${cmd.name}${interaction.user.id}`);
 		}, cmd.cooldown);
 	}
-	return [true, cmd.run];
+	return [true, cmd.runInteraction];
 }

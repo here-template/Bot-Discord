@@ -12,7 +12,7 @@ module.exports = {
 	 * @param {CommandInteraction} interaction
 	 * @param {Client} client
 	 */
-	run: async (client, interaction) => {
+	runInteraction: async (client, interaction) => {
 		//le code de la commande ici
 		return interaction.reply({ content: `Ceci est une commande **d'exemple** __${interaction.user.username}__ !` });
 	},

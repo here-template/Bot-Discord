@@ -8,7 +8,7 @@ module.exports = {
    * @param {CommandInteraction} interaction
    * @param {Client} client
    */
-  run: async (client, interaction) => {
+  runInteraction: async (client, interaction) => {
     await interaction.deferReply(); //si il ya un test long à faire
     return interaction.editReply("Aucun test de codé !");
   },

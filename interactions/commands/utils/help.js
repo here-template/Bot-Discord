@@ -18,7 +18,7 @@ module.exports = {
 	 * @param {CommandInteraction} interaction
 	 * @param {Client} client
 	 */
-	run: async (client, interaction) => {
+	runInteraction: async (client, interaction) => {
 		const cmdName = interaction.options.getString("commande");
 		if (!cmdName) {
 			const noArgsEmbed = new EmbedBuilder().setColor("#E53935").addFields([{ name: "La liste des commandes :", value: "Une liste de toutes les catégories disponibles et leurs commandes.\nPour plus d'informations sur une commande, tapez `/help <command>`" }]);

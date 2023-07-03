@@ -7,7 +7,7 @@ module.exports = {
    * @param {CommandInteraction} interaction
    * @param {Client} client
    */
-  run: async (client, interaction) => {
+  runInteraction: async (client, interaction) => {
     // Creation du modals
       const modal = new ModalBuilder()
       .setCustomId('testmodal')

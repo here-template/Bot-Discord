@@ -1,7 +1,3 @@
-const {PermissionsBitField, Collection} = require("discord.js");
-const {client} = require("../../index");
-const cooldown = new Collection();
-
 module.exports = (client, interaction) => {
 	const modal = client.modals.get(interaction.customId);
 	if (!modal) return [false];

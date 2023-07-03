@@ -9,9 +9,9 @@ module.exports = (client) => {
 		const button = require(`../../interactions/buttons/${file}`);
 		if (button) {
 			//si pas spécifié alors par defaut false
-			if (!button.admin) {
-				button.admin = false;
-			}
+			if (!button.admin) button.admin = false;
+			if(!button.userOnly) button.userOnly = false;
+			
 			client.buttons.set(button.customID, button);
 			console.log(cyan(`  > ${button.customID}`));
 		}
