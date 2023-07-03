@@ -5,5 +5,6 @@ module.exports = (client, interaction) => {
 	if (button.admin && !client.config.owner.includes(interaction.user.id)) {
 		return [false, { content: "Vous n'êtes pas admin du bot !", ephemeral: true }];
 	}
-	return [true]
+	if (!button.userOnly)
+	return [true,button.runInteraction]
 }

@@ -30,7 +30,7 @@ module.exports = (client) => {
 				command.botPermissions.push("SendMessages");
 				//à faire : vérif taille description ?
 				//upload dans le bot
-				client.commands.set(command.name, command);;
+				client.commands.set(command.name, command);
 				console.log(yellow(`  > ${command.name}`));
 			};
 		});

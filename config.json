@@ -4,11 +4,11 @@
 	"dev": ["id_discord_user"],
 	"invite": "Invitation discord",
 	"bdd": {
-		"enable": true,
+		"enable": false,
 		"host": "localhost",
+	  	"database": "database",
 		"user": "root",
 		"password": "password",
-		"database": "database",
 		"port": 3306
 	}
 }

@@ -44,6 +44,7 @@ client.buttons = new Collection();
 client.selects = new Collection();
 client.modals = new Collection();
 
+module.exports.client = client;
 
 //Chargement en mémoire des handlers :
 ["command", "event", "button", "select", "modal"].forEach(async (handler) => {
@@ -52,4 +53,3 @@ client.modals = new Collection();
 
 //Connection du bot :
 client.login(process.env.TOKEN);
-module.exports.client = client;

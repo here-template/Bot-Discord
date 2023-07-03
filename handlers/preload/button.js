@@ -4,7 +4,6 @@ const { cyan } = require("cli-color");
 module.exports = (client) => {
 	console.log(cyan.underline("Buttons chargés :"));
 	const files = fs.readdirSync(`./interactions/buttons/`).filter((file) => file.endsWith(".js"));
-	console.log(files);
 	if (!files || files.length <= 0);
 	files.forEach((file) => {
 		const button = require(`../../interactions/buttons/${file}`);

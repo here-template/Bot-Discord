@@ -1,6 +1,6 @@
 const { CommandInteraction, Client, EmbedBuilder } = require("discord.js");
 const { readdirSync } = require("fs");
-const commandFolder = readdirSync("./commands");
+const commandFolder = readdirSync("./interactions/commands");
 
 module.exports = {
 	name: "help",
