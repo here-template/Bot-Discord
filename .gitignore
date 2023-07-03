@@ -1,4 +1,4 @@
 node_modules
 *.DS_store
-.idea/
+.idea
 #.idea/runConfigurations/dev.xml
