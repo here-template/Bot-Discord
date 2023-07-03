@@ -9,6 +9,6 @@ module.exports = {
 	 * @param {Client} client
 	 */
 	runInteraction: async (client, interaction) => {
-		interaction.reply({ content: `Le bot à une latence de :\`${client.ws.ping}ms\`` });
+		interaction.reply({ content: `Le bot a une latence de \`${client.ws.ping}ms\`` });
 	},
 };
