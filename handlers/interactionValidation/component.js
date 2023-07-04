@@ -12,6 +12,7 @@ module.exports = (client, interaction) => {
 		}];
 		return [true, button.runInteraction];
 	}
+	//#########################
 	const select = client.selects.get(interaction.customId);
 	if (!select) return [false];
 	//Vérifie si l'utilisateur est owner en cas de commande admin
@@ -19,5 +20,4 @@ module.exports = (client, interaction) => {
 		return interaction.reply({content: "Vous n'êtes pas admin du bot !", ephemeral: true});
 	}
 	return [true, select.runInteraction];
-	
 };
