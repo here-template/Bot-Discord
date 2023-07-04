@@ -1,43 +1,51 @@
 # Base de bot discord.js v14 (node 18.12.1)
 
- ## Fonctionalités :
- - **Handler :** 
-   - Commande
-   - Button
-   - Event
-   - Select
-   - Modal
+## Fonctionalités :
 
- - **Vérification des permissions discord !**
+- **Handler :**
+    - Commande
+    - Button
+    - Event
+    - Select
+    - Modal
 
- - **Commandes Administrateur**
+- **Vérification des permissions discord pour les commandes !**
 
- - **Commandes "en développement"**
+- **Commandes Administrateur**
 
- - **Commandes avec cooldown**
+- **Commandes "en développement"**
 
- - **Commande donné :**
-   - /help *génère dynamiquement le message d'help avec les commande existantes*
-   - /stop
-   - /test
-   - /ping
+- **Commandes avec cooldown**
 
- - **Particularité :**
-  - Les commandes de la categorie admin ne sont pas affichés dans le /help et nessecite d'être inscrit (id discord) dans le tableu owner de config.js
-  - Les commande marqué comme devOnly: true, nessecite d'être devellopeur pour être executer, inscrit dans le tableur dev de config.js
-  - Les configs sont mis dans le cache du clien, pour y acceder : client.config
-  - Le cooldown est en seconde, mais attention il se reset à chaque redémarage de bot, il est désactivé pour si la commande est en devOnly
-  - Vous pouvez lancer le bot avec *npm run dev*, dans ce cas le bot se redémare à chaque save que vous faite, sinon utiliser *node index.js*
+- **Commandes données :**
+    - /help *génère dynamiquement le message d'aide avec les commandes existantes*
+    - /stop *permet d'arreter le bot* (command admin)
+    - /test
+    - /ping
 
- ## Options de commandes :
-  - ```userPermissions: [""],``` les permissions supplémentaire nessecaire à l'utilisateur *(par defaut: ```sendMessages```)*
-  - ```botPermissions: [""],``` les permissions supplémentaire nessecaire au bot *(par defaut: ```sendMessages```)*
-  - ```devOnly: true,``` *(par défaut: false)*
-  - ```cooldown: t,``` t= les temps entre 2 executions de la commande, en seconde *(par défaut: ```0s```)*
+- **Particularité :**
+- Les commandes de la catégorie admin ne sont pas affichées dans le /help et nécessitent d'être inscrit (id discord)
+  dans le tableau owner de config.js
+- Les commandes marquées comme `devOnly: true`, nécessite d'être développeur pour être exécuté, inscrit dans le tableur
+  dev de config.js
+- Les configs sont mis dans le cache du client, pour y accéder : `client.config`
+- Le cooldown est en seconde, mais attention il se reset à chaque redémarage de bot, il est désactivé pour les commandes
+  en devOnly
+- Vous pouvez lancer le bot avec *npm run dev*, dans ce cas le bot se redémare à chaque save que vous faites, sinon
+  utiliser *node index.js* ou *npm run start*
+
+## Options de commandes :
+
+- ```userPermissions: [""],``` les permissions supplémentaires nécessaires à l'utilisateur *(par
+  défaut: ```sendMessages```)*
+- ```botPermissions: [""],``` les permissions supplémentaires nécessaires au bot *(par défaut: ```sendMessages```)*
+- ```devOnly: true,``` *(par défaut: false)*
+- ```cooldown: t,``` t= les temps entre 2 executions de la commande, en seconde *(par défaut: ```0s```)*
 
 ## Instalation :
+
 - Faire un fork du reposite
 - Ouvrir le dossier du project
 - Installer les librairies `npm i`
 - Mettre le token de votre bot dans le fichier `.env`
-- Executer `npm run start` et le bot se met en ligne
+- Exécuter `npm run start` et le bot se met en ligne
