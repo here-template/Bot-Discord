@@ -1,5 +1,5 @@
-const { redBright } = require("cli-color");
-const { ChatInputCommandInteraction, Client } = require("discord.js");
+const {redBright} = require("cli-color");
+const {ChatInputCommandInteraction, Client} = require("discord.js");
 
 module.exports = {
 	name: "stop",

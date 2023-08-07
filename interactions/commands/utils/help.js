@@ -1,5 +1,5 @@
-const { CommandInteraction, Client, EmbedBuilder } = require("discord.js");
-const { readdirSync } = require("fs");
+const {ChatInputCommandInteraction, Client, EmbedBuilder} = require("discord.js");
+const {readdirSync} = require("fs");
 const commandFolder = readdirSync("./interactions/commands");
 
 module.exports = {
@@ -15,14 +15,17 @@ module.exports = {
 	],
 	description: "Une commande d'aide, avec la liste des commandes et leurs spécifités.",
 	/**
-	 * @param {CommandInteraction} interaction
+	 * @param {ChatInputCommandInteraction} interaction
 	 * @param {Client} client
 	 */
 	runInteraction: async (client, interaction) => {
 		const cmdName = interaction.options.getString("commande");
 		if (!cmdName) {
-			const noArgsEmbed = new EmbedBuilder().setColor("#E53935").addFields([{ name: "La liste des commandes :", value: "Une liste de toutes les catégories disponibles et leurs commandes.\nPour plus d'informations sur une commande, tapez `/help <command>`" }]);
-
+			const noArgsEmbed = new EmbedBuilder().setColor("#E53935").addFields([{
+				name: "La liste des commandes :",
+				value: "Une liste de toutes les catégories disponibles et leurs commandes.\nPour plus d'informations sur une commande, tapez `/help <command>`"
+			}]);
+			
 			for (const category of commandFolder) {
 				if (category != "admin" || client.config.owner.includes(interaction.user.id)) {
 					noArgsEmbed.addFields([
@@ -36,10 +39,13 @@ module.exports = {
 					]);
 				}
 			}
-			return interaction.reply({ embeds: [noArgsEmbed] });
+			return interaction.reply({embeds: [noArgsEmbed]});
 		}
 		const cmd = client.commands.get(cmdName);
-		if (!cmd) return interaction.reply({ content: `:x: \`${cmdName}\` n\'est pas une commande valide !`, ephemeral: true });
+		if (!cmd) return interaction.reply({
+			content: `:x: \`${cmdName}\` n\'est pas une commande valide !`,
+			ephemeral: true
+		});
 		//usage :
 		let usage = `/${cmdName}`,
 			opts = "";
@@ -54,33 +60,36 @@ module.exports = {
 		const embed = new EmbedBuilder()
 			.setTitle(`"Information sur la commande :" </${cmdName}:${cmdId}>`)
 			.setDescription(cmd.description)
-			.addFields([{ name: "Information : ", value: `\`\`\`yml\nCategorie : ${cmd.category}\nUsage : ${usage}\`\`\`` }])
+			.addFields([{
+				name: "Information : ",
+				value: `\`\`\`yml\nCategorie : ${cmd.category}\nUsage : ${usage}\`\`\``
+			}])
 			.setColor("#EF6C00")
-			.setFooter({ text: "💭 <> = obligatoire et [] = optionnel" });
+			.setFooter({text: "💭 <> = obligatoire et [] = optionnel"});
 		if (cmd.options) {
-			embed.addFields({ name: "Les options de la commande :", value: `\`\`\`yml\n${opts}\`\`\`` });
+			embed.addFields({name: "Les options de la commande :", value: `\`\`\`yml\n${opts}\`\`\``});
 		}
-		interaction.reply({ embeds: [embed] });
+		interaction.reply({embeds: [embed]});
 	},
-
+	
 	/**
-	 * @param {CommandInteraction} interaction
+	 * @param {ChatInputCommandInteraction} interaction
 	 * @param {Client} client
 	 */
-
+	
 	runAutocomplete: async (client, interaction) => {
 		const focusedOptions = interaction.options.getFocused(true);
 		let choices = client.commands?.map((c) => {
 			if (c.category != "admin" || client.config.owner.includes(interaction.user.id)) {
 				return c.name;
 			}
-			return;
+			
 		});
 		//vire les undefined
 		choices = choices.filter((c) => c);
 		if (!choices) return;
 		const filtered = choices.filter((c) => c.includes(focusedOptions.value.toLowerCase()));
 		const filterLimite = filtered.slice(0, 15);
-		await interaction.respond(filterLimite.map((c) => ({ name: `/${c}`, value: c })));
+		await interaction.respond(filterLimite.map((c) => ({name: `/${c}`, value: c})));
 	},
 };

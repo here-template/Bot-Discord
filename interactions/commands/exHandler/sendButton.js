@@ -1,4 +1,4 @@
-const {CommandInteraction, Client, ActionRowBuilder, ButtonBuilder, ButtonStyle} = require("discord.js");
+const {ChatInputCommandInteraction, Client, ActionRowBuilder, ButtonBuilder, ButtonStyle} = require("discord.js");
 
 module.exports = {
 	name: "sendbutton",

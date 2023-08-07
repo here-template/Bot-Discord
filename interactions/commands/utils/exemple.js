@@ -1,4 +1,4 @@
-const { CommandInteraction, Client } = require("discord.js");
+const {ChatInputCommandInteraction, Client} = require("discord.js");
 
 module.exports = {
 	name: "exemple",
@@ -9,11 +9,11 @@ module.exports = {
 	userPermissions: ["Administrator"], //L'utilisateur a besoin des permissions administrateur pour executer cette commande
 	botPermissions: ["Administrator"], //Le bot a besoin des permissions administrateur pour executer cette commande
 	/**
-	 * @param {CommandInteraction} interaction
+	 * @param {ChatInputCommandInteraction} interaction
 	 * @param {Client} client
 	 */
 	runInteraction: async (client, interaction) => {
 		//le code de la commande ici
-		return interaction.reply({ content: `Ceci est une commande **d'exemple** __${interaction.user.username}__ !` });
+		return interaction.reply({content: `Ceci est une commande **d'exemple** __${interaction.user.username}__ !`});
 	},
 };
