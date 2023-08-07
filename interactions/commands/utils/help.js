@@ -1,7 +1,7 @@
 const {ChatInputCommandInteraction, Client, EmbedBuilder} = require("discord.js");
 const {readdirSync} = require("fs");
-const commandFolder = readdirSync("./interactions/commands");
-
+let dirsCategory = readdirSync("./interactions/commands/").filter((file) => !file.includes("."));
+dirsCategory.push("../commands");
 module.exports = {
 	name: "help",
 	options: [
@@ -13,7 +13,7 @@ module.exports = {
 			autocomplete: true,
 		},
 	],
-	description: "Une commande d'aide, avec la liste des commandes et leurs spécifités.",
+	description: "Une commande d'aide, avec la liste des commandes et leurs spécificités.",
 	/**
 	 * @param {ChatInputCommandInteraction} interaction
 	 * @param {Client} client
@@ -23,16 +23,17 @@ module.exports = {
 		if (!cmdName) {
 			const noArgsEmbed = new EmbedBuilder().setColor("#E53935").addFields([{
 				name: "La liste des commandes :",
-				value: "Une liste de toutes les catégories disponibles et leurs commandes.\nPour plus d'informations sur une commande, tapez `/help <command>`"
+				value: "Une liste de toutes les catégories disponibles et leurs commandes.\nPour plus d'informations sur une commande, tapez `/help <command>`",
 			}]);
 			
-			for (const category of commandFolder) {
+			console.log(dirsCategory);
+			for (let category of dirsCategory) {
 				if (category !== "admin" || client.config.owner.includes(interaction.user.id)) {
+					if (category === "../commands") category = "sans_categorie";
 					noArgsEmbed.addFields([
 						{
-							name: `__> ${category.replace(/(^\w|\s\w)/g, (firstLetter) => firstLetter.toUpperCase())} :__`,
-							value: `${client.commands
-								.filter((cmd) => cmd.category === category.toLowerCase())
+							name: `__> ${(category !== "sans_categorie" ? category : "sans catégorie").replace(/(^\w|\s\w)/g, (firstLetter) => firstLetter.toUpperCase())} :__`,
+							value: `${client.commands.filter((cmd) => cmd.category === category.toLowerCase())
 								.map((cmd) => `</${cmd.name}:${client.application.commands.cache.find((x) => x.name === cmd.name).id}>`)
 								.join(", ")}`,
 						},
@@ -62,7 +63,7 @@ module.exports = {
 			.setDescription(cmd.description)
 			.addFields([{
 				name: "Information : ",
-				value: `\`\`\`yml\nCatégorie : ${cmd.category}\nUsage : ${usage}\`\`\``
+				value: `\`\`\`yml\nCatégorie : ${cmd.category !== "sans_categorie" ? cmd.category : "sans catégorie"}\nUsage : ${usage}\`\`\``
 			}])
 			.setColor("#EF6C00")
 			.setFooter({text: "💭 <> = obligatoire et [] = optionnel"});
