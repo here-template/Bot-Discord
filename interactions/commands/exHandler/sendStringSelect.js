@@ -11,7 +11,7 @@ module.exports = {
 		const row = new ActionRowBuilder()
 			.addComponents(
 				new StringSelectMenuBuilder()
-					.setCustomId("sendstringselect") //Cutom ID du bouton pour interactions/buttons/sendStringModal.js
+					.setCustomId("sendStringSelect") //Custom ID du StrinSelectMenu
 					.setPlaceholder("Choisissez une option")
 					.addOptions([
 						{
