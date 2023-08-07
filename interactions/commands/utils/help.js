@@ -27,12 +27,12 @@ module.exports = {
 			}]);
 			
 			for (const category of commandFolder) {
-				if (category != "admin" || client.config.owner.includes(interaction.user.id)) {
+				if (category !== "admin" || client.config.owner.includes(interaction.user.id)) {
 					noArgsEmbed.addFields([
 						{
 							name: `__> ${category.replace(/(^\w|\s\w)/g, (firstLetter) => firstLetter.toUpperCase())} :__`,
 							value: `${client.commands
-								.filter((cmd) => cmd.category == category.toLowerCase())
+								.filter((cmd) => cmd.category === category.toLowerCase())
 								.map((cmd) => `</${cmd.name}:${client.application.commands.cache.find((x) => x.name === cmd.name).id}>`)
 								.join(", ")}`,
 						},
@@ -62,7 +62,7 @@ module.exports = {
 			.setDescription(cmd.description)
 			.addFields([{
 				name: "Information : ",
-				value: `\`\`\`yml\nCategorie : ${cmd.category}\nUsage : ${usage}\`\`\``
+				value: `\`\`\`yml\nCatégorie : ${cmd.category}\nUsage : ${usage}\`\`\``
 			}])
 			.setColor("#EF6C00")
 			.setFooter({text: "💭 <> = obligatoire et [] = optionnel"});
@@ -73,14 +73,14 @@ module.exports = {
 	},
 	
 	/**
-	 * @param {ChatInputCommandInteraction} interaction
+	 * @param {AutocompleteInteraction} interaction
 	 * @param {Client} client
 	 */
 	
 	runAutocomplete: async (client, interaction) => {
 		const focusedOptions = interaction.options.getFocused(true);
 		let choices = client.commands?.map((c) => {
-			if (c.category != "admin" || client.config.owner.includes(interaction.user.id)) {
+			if (c.category !== "admin" || client.config.owner.includes(interaction.user.id)) {
 				return c.name;
 			}
 			
