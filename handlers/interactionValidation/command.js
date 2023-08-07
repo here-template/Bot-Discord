@@ -36,7 +36,7 @@ module.exports = (client, interaction) => {
 	if (cmd.cooldown && !cmd.devOnly) {
 		if (cooldown.has(`${cmd.name}${interaction.user.id}`)) {
 			const t = Math.floor((cooldown.get(`${cmd.name}${interaction.user.id}`) - Date.now()) / 1000);
-			return [false, {content: `Cette commande à un cooldown, il reste **${t}s** !`}];
+			return [false, {content: `Cette commande à un cooldown, il reste **${t}s** !`, ephemeral: true}];
 		}
 		cooldown.set(`${cmd.name}${interaction.user.id}`, Date.now() + cmd.cooldown);
 		setTimeout(() => {
