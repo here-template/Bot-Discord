@@ -7,7 +7,7 @@ module.exports = (client) => {
 	dirs.push("../buttons");
 	dirs.forEach((dir) => {
 		const files = fs.readdirSync(`./interactions/buttons/${dir}/`).filter((file) => file.endsWith(".js"));
-		console.log(cyan.bold(`> ${dir === "../buttons" ? "sans catégorie" : dir} :`));
+		if (files.length !== 0) console.log(cyan.bold(`> ${dir === "../buttons" ? "sans catégorie" : dir} :`));
 		files.forEach((file) => {
 			const button = require(`../../interactions/buttons/${dir}/${file}`);
 			if (button) {

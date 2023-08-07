@@ -7,7 +7,7 @@ module.exports = (client) => {
 	dirs.push("../commands");
 	dirs.forEach((dir) => {
 		const files = fs.readdirSync(`./interactions/commands/${dir}/`).filter((file) => file.endsWith(".js"));
-		console.log(yellow.bold(`> ${dir === "../commands" ? "sans catégorie" : dir} :`));
+		if (files.length !== 0) console.log(yellow.bold(`> ${dir === "../commands" ? "sans catégorie" : dir} :`));
 		files.forEach((file) => {
 			let command = require(`../../interactions/commands/${dir}/${file}`);
 			if (command) {
