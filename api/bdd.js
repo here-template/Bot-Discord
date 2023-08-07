@@ -35,7 +35,7 @@ module.exports.pool = bddPool;
  */
 module.exports.query = async (re) => {
 	if (re === undefined) {
-		console.log("requete vide");
+		console.log("requête MySQL vide !");
 		return false;
 	}
 	let pool = await require("./bdd.js").pool;
@@ -46,6 +46,9 @@ module.exports.query = async (re) => {
 				return resolve(result_query); //renvoi boolean, si @id à un compte ou pas
 			});
 		});
+		if (process.env.DEBUG === "true") {
+			console.log(clc.yellow(`> Requête MySQL : "${re}"\n${result}`));
+		}
 		return result;
 	} catch (error) {
 		console.log("Mysql error dans query()");
