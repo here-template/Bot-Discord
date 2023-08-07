@@ -3,7 +3,7 @@ const fs = require("fs");
 
 module.exports = (client) => {
 	console.log(yellow.underline("Commandes chargées :"));
-	let dirs = fs.readdirSync("./interactions/commands/");
+	let dirs = fs.readdirSync("./interactions/commands/").filter((file) => !file.includes("."));
 	dirs.push("../commands");
 	dirs.forEach((dir) => {
 		const files = fs.readdirSync(`./interactions/commands/${dir}/`).filter((file) => file.endsWith(".js"));
@@ -24,7 +24,7 @@ module.exports = (client) => {
 				
 				
 				//la categorie
-				command.category = dir === "../commands" ? "sans_categorie" : dir;
+				command.category = dir === "../commands" ? "sans_categorie" : dir.toLowerCase();
 				
 				//les permissions (par défaut)
 				if (!command.userPermissions) command.userPermissions = [];
