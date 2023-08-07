@@ -12,7 +12,7 @@
 - **Commandes données :**
     - /help *génère dynamiquement le message d'aide avec les commandes existantes*
     - /stop *permet d'arrêter le bot* (commande admin)
-    - /test *une commande vide pour vos test* (commande admin)
+    - /test *une commande vide pour vos tests* (commande admin)
     - /ping *donne la latence du bot* (en ms)
 
 - **Particularité :**
@@ -27,6 +27,7 @@
   utiliser *node index.js* ou *npm run start*
 - Les buttons et les commandes peuvent avoir des catégories : créer un dossier et rangé le fichier dedans (allez voir
   les exemples)
+- Mode debug activé par défaut, configuration dans `.ENV`
 
 ## Options de commandes :
 
@@ -36,12 +37,13 @@
 - ```devOnly: true,``` *(par défaut: false)*
 - ```cooldown: t,``` t= les temps entre 2 executions de la commande, en seconde *(par défaut: ```0s```)*
 - ```mpLock: true,``` Si true, la commande ne peut être execute que dans un salon d'un serveur et non en mp *(par
-  défaut: ````false``)*
+  défaut: ```false```)*
 
 ## Installation :
 
 - Faire un fork du reposite
 - Ouvrir le dossier du project
-- Installer les librairies `npm i`
+- Installez les librairies `npm i`
 - Mettre le token de votre bot dans le fichier `.env`
+- Configurez le bot (admin/devellopeur) dans le fichier `config.json`
 - Exécuter `npm run start` et le bot se met en ligne
