@@ -7,14 +7,15 @@ module.exports = (client) => {
 	dirs.push("../buttons");
 	dirs.forEach((dir) => {
 		const files = fs.readdirSync(`./interactions/buttons/${dir}/`).filter((file) => file.endsWith(".js"));
-		console.log(cyan.bold(`> ${dir === "../buttons" ? "sans categorie" : dir} :`));
+		console.log(cyan.bold(`> ${dir === "../buttons" ? "sans catégorie" : dir} :`));
 		files.forEach((file) => {
 			const button = require(`../../interactions/buttons/${dir}/${file}`);
 			if (button) {
 				//si pas spécifié alors par defaut false
 				if (!button.admin) button.admin = false;
 				if (!button.userOnly) button.userOnly = false;
-				button.category = dir === "../buttons" ? "sans" : dir;
+				
+				button.category = dir === "../buttons" ? "sans_categorie" : dir;
 				
 				client.buttons.set(button.customID, button);
 				console.log(cyan(`  > ${button.customID}`));
