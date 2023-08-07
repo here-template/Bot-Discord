@@ -1,6 +1,6 @@
 const fs = require("fs");
-const { greenBright, redBright, bold } = require("cli-color");
-const selectType = {text: 3, user: 5, role: 6, mentionable: 7, channels: 8}
+const {greenBright, redBright, bold} = require("cli-color");
+const selectType = {text: 3, user: 5, role: 6, mentionable: 7, channels: 8};
 
 module.exports = (client) => {
 	console.log(greenBright.underline("Selects chargés :"));
@@ -14,7 +14,7 @@ module.exports = (client) => {
 				select.admin = false;
 			}
 			if (!select.type || !Object.keys(selectType).includes(select.type)) {
-				return console.log(redBright.bold(`>>> ${select.customID} n'a pas de type défini !`))
+				return console.log(redBright.bold(`>>> ${select.customID} n'a pas de type défini !`));
 			}
 			console.log(greenBright(`  > ${select.customID} : ${select.type}`));
 			select.type = selectType[select.type];
