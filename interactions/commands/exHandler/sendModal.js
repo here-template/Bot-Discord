@@ -2,9 +2,9 @@ const {
 	ChatInputCommandInteraction,
 	Client,
 	ActionRowBuilder,
-	ButtonBuilder,
-	ButtonStyle,
-	ModalBuilder
+	ModalBuilder,
+	TextInputBuilder,
+	TextInputStyle
 } = require("discord.js");
 
 module.exports = {
@@ -17,28 +17,28 @@ module.exports = {
 	runInteraction: async (client, interaction) => {
 		// Creation du modals
 		const modal = new ModalBuilder()
-			.setCustomId("testmodal")
+			.setCustomId("testModal") //custom ID du modal
 			.setTitle("My Modal");
 		
-		// Création de l'input
+		// Création d'input (court)
 		const favoriteColorInput = new TextInputBuilder()
 			.setCustomId("favoriteColorInput")
 			.setLabel("What's your favorite color?")
 			.setStyle(TextInputStyle.Short);
-		
+		// Création d'input (long)
 		const hobbiesInput = new TextInputBuilder()
 			.setCustomId("hobbiesInput")
 			.setLabel("What's some of your favorite hobbies?")
 			.setStyle(TextInputStyle.Paragraph);
 		
-		// Convertion des input en components pour le modals
+		// Convertion des input en components pour le modal
 		const firstActionRow = new ActionRowBuilder().addComponents(favoriteColorInput);
 		const secondActionRow = new ActionRowBuilder().addComponents(hobbiesInput);
 		
-		// Ajout des components au modals
+		// Ajout des components au modal
 		modal.addComponents(firstActionRow, secondActionRow);
 		
-		// Affichage du modals au user
+		// Montre le modal
 		await interaction.showModal(modal);
 	},
 };
