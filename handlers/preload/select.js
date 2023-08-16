@@ -9,6 +9,7 @@ module.exports = (client) => {
 	files.forEach((file) => {
 		const select = require(`../../interactions/selects/${file}`);
 		if (select) {
+			if (select.customID === undefined) return console.log(redBright.bold(`>> Le select dans ${file} n'a pas de customID !`));
 			//si pas spécifié alors par defaut false
 			if (!select.admin) {
 				select.admin = false;

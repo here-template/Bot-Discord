@@ -1,5 +1,5 @@
 const fs = require("fs");
-const {cyan} = require("cli-color");
+const {cyan, redBright} = require("cli-color");
 
 module.exports = (client) => {
 	console.log(cyan.underline("Buttons chargés :"));
@@ -11,6 +11,7 @@ module.exports = (client) => {
 		files.forEach((file) => {
 			const button = require(`../../interactions/buttons/${dir}/${file}`);
 			if (button) {
+				if (button.customID === undefined) return console.log(redBright.bold(`>> Le button dans ${file} n'a pas de customID !`));
 				//si pas spécifié alors par defaut false
 				if (!button.admin) button.admin = false;
 				if (!button.userOnly) button.userOnly = false;

@@ -1,5 +1,5 @@
 const fs = require("fs");
-const {black} = require("cli-color");
+const {black, redBright} = require("cli-color");
 
 module.exports = (client) => {
 	console.log(black.underline("Modals chargés :"));
@@ -8,6 +8,7 @@ module.exports = (client) => {
 	files.forEach((file) => {
 		const modal = require(`../../interactions/modals/${file}`);
 		if (modal) {
+			if (modal.customID === undefined) return console.log(redBright.bold(`>> Le modal dans ${file} n'a pas de customID !`));
 			//si pas spécifié alors par defaut false
 			if (!modal.admin) {
 				modal.admin = false;

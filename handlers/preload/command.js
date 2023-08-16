@@ -1,4 +1,4 @@
-const {yellow} = require("cli-color");
+const {yellow, redBright} = require("cli-color");
 const fs = require("fs");
 
 module.exports = (client) => {
@@ -11,6 +11,8 @@ module.exports = (client) => {
 		files.forEach((file) => {
 			let command = require(`../../interactions/commands/${dir}/${file}`);
 			if (command) {
+				if (command.name === undefined) return console.log(redBright.bold(`>> La commande dans ${file} n'a pas de name !`));
+				if (command.description === undefined) return console.log(redBright.bold(`>> La commande dans ${file} n'a pas de description !`));
 				//met le cooldown en ms et ajuste le temps max
 				if (command.cooldown) {
 					command.cooldown *= 1000;
