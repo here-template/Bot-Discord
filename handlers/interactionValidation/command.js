@@ -5,7 +5,7 @@ module.exports = (client, interaction) => {
 	const cmd = client.commands.get(interaction.commandName);
 	if (!cmd) return [false, {content: "Cette commande ne semble pas exister !", ephemeral: true}];
 	if (cmd.mpLock && interaction.channel.isDMBased()) {
-		return [false, {content: "Cette commande ne peut pas être fait en en MP !\nAller sur un serveur où vous êtes présent avec le bot et fait votre commande."}];
+		return [false, {content: "Cette commande ne peut pas être fait en en MP !\nAllez sur un serveur où vous êtes présent avec le bot et fait votre commande."}];
 	}
 	//Vérifie si l'utilisateur est owner en cas de commande admin
 	if (cmd.category === "admin" && !client.config.owner.includes(interaction.user.id)) {
