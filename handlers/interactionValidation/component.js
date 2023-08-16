@@ -6,7 +6,7 @@ module.exports = (client, interaction) => {
 		if (button.admin && !client.config.owner.includes(interaction.user.id)) {
 			return [false, {content: "Vous n'êtes pas admin du bot !", ephemeral: true}];
 		}
-		if (!button.userOnly && interaction.user.id !== interaction.message.interaction.user.id) return [false, {
+		if (button.userOnly && interaction.user.id !== interaction.message.interaction.user.id) return [false, {
 			content: "Vous n'êtes pas originaire de cette commande !",
 			ephemeral: true
 		}];
