@@ -25,17 +25,14 @@ module.exports = {
 				name: "La liste des commandes :",
 				value: "Une liste de toutes les catégories disponibles et leurs commandes.\nPour plus d'informations sur une commande, tapez `/help <command>`",
 			}]);
-			
-			console.log(dirsCategory);
 			for (let category of dirsCategory) {
 				if (category !== "admin" || client.config.owner.includes(interaction.user.id)) {
 					if (category === "../commands") category = "sans_categorie";
+					const cmdsUtilisable = client.commands.filter((cmd) => cmd.category === category.toLowerCase()).map((cmd) => `</${cmd.name}:${client.application.commands.cache.find((x) => x.name === cmd.name).id}>`).join(", ");
 					noArgsEmbed.addFields([
 						{
 							name: `__> ${(category !== "sans_categorie" ? category : "sans catégorie").replace(/(^\w|\s\w)/g, (firstLetter) => firstLetter.toUpperCase())} :__`,
-							value: `${client.commands.filter((cmd) => cmd.category === category.toLowerCase())
-								.map((cmd) => `</${cmd.name}:${client.application.commands.cache.find((x) => x.name === cmd.name).id}>`)
-								.join(", ")}`,
+							value: `${cmdsUtilisable === "" ? "Pas de commande" : cmdsUtilisable}`,
 						},
 					]);
 				}
