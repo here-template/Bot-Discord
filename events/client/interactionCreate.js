@@ -1,5 +1,6 @@
 const client = require("./../../index.js").client;
 const {redBright, bold} = require("cli-color");
+const debug = process.env.DEBUG === "true";
 const interType = {
 	2: require("../../handlers/interactionValidation/command.js"),
 	3: require("../../handlers/interactionValidation/component.js"),//discord ne differencie pas les btns des selects
@@ -8,21 +9,26 @@ const interType = {
 };
 
 client.on("interactionCreate", async (interaction) => {
-	if (process.env.DEBUG === "true") {
-		console.log(interaction);
-	}
+	const time = Date.now();
+	/*if (debug) {
+		console.log(interaction);//pas tres utile
+	}*/
 	if (interaction.user.bot) return console.log(`Le bot ${interaction.user.username} a tenté de faire une commande !`);
-	const inter = interType[interaction.type](client, interaction);
+	const inter = await interType[interaction.type](client, interaction);
 	if (!inter[0]) return interaction.reply(inter[1] ?? {
 		content: "Cette action ne semble pas exister !",
 		ephemeral: true
 	});
 	try {
-		return await inter[1](client, interaction);
+		await inter[1](client, interaction);
+		if (debug) console.log(`> ${Date.now() - time}ms`);
 	} catch (err) {
 		if (!err) return;
 		console.log(redBright.bold(`>> Erreur dans ${interaction.commandName} :`));
 		console.log(err);
+		if (debug) console.log(`> ${Date.now() - time}ms`);
+		if (Date.now() - time > 3000 && !interaction.deferred) console.log(redBright.bold(`/!\\ Cette interaction a mis plus de 3000ms (${Date.now() - time}ms)\nL'utilisation de "interaction.deferReply();" est conseiller.`));
+		if (interaction.responded || interaction.replied || interaction.deferred) return interaction.editReply({content: "Une erreur c'est produite !"});
 		return interaction.reply({content: "Une erreur c'est produite !", ephemeral: true});
 	}
 });
