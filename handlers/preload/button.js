@@ -16,10 +16,11 @@ module.exports = (client) => {
 				if (!button.admin) button.admin = false;
 				if (!button.userOnly) button.userOnly = false;
 				
-				button.category = dir === "../buttons" ? "sans_categorie" : dir.toLowerCase();
 				
-				client.buttons.set(button.customID, button);
+				button.category = dir === "../buttons" ? "sans_categorie" : dir.toLowerCase();
 				console.log(cyan(`  > ${button.customID}`));
+				if (dir !== "../buttons") button.customID = `${dir}:${button.customID}`;
+				client.buttons.set(button.customID, button);
 			}
 		});
 	});
