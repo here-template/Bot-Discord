@@ -10,6 +10,4 @@ client.once("ready", async () => {
 	
 	await client.application.commands.set(client.commands.map((cmd) => cmd));
 	console.log(clc.blue.bold.underline(`${client.user.tag} est connecté à discord.`));
-	//deconnecte le bot des vocs
-	await (await (await client.guilds.fetch(client.config.frgamingID)).members.fetch(client.user.id)).voice.disconnect();
 });
