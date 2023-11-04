@@ -1,11 +1,11 @@
 const {PermissionsBitField, Collection} = require("discord.js");
 const cooldown = new Collection();
 
-module.exports = (client, interaction) => {
+module.exports = async (client, interaction) => {
 	const cmd = client.commands.get(interaction.commandName);
 	if (!cmd) return [false, {content: "Cette commande ne semble pas exister !", ephemeral: true}];
-	if (cmd.mpLock && interaction.channel.isDMBased()) {
-		return [false, {content: "Cette commande ne peut pas être fait en en MP !\nAllez sur un serveur où vous êtes présent avec le bot et fait votre commande."}];
+	if (!cmd.mp && interaction.channel.isDMBased()) {
+		return [false, {content: `Cette commande ne peut pas être fait en en MP !Allez sur **un serveur** pour fait votre commande.`}];
 	}
 	//Vérifie si l'utilisateur est owner en cas de commande admin
 	if (cmd.category === "admin" && !client.config.owner.includes(interaction.user.id)) {
@@ -35,13 +35,20 @@ module.exports = (client, interaction) => {
 	//Execution vérification pour cooldown
 	if (cmd.cooldown && !cmd.devOnly) {
 		if (cooldown.has(`${cmd.name}${interaction.user.id}`)) {
-			const t = Math.floor((cooldown.get(`${cmd.name}${interaction.user.id}`) - Date.now()) / 1000);
-			return [false, {content: `Cette commande à un cooldown, il reste **${t}s** !`, ephemeral: true}];
+			const t = Math.floor((cooldown.get(`${cmd.name}${interaction.user.id}`)) / 1000);
+			return [false, {content: `Cette commande à un cooldown, il reste <t:${t}:R> !`, ephemeral: true}];
 		}
 		cooldown.set(`${cmd.name}${interaction.user.id}`, Date.now() + cmd.cooldown);
 		setTimeout(() => {
 			cooldown.delete(`${cmd.name}${interaction.user.id}`);
 		}, cmd.cooldown);
+	}
+	if (cmd.isCommandeGroupe) {
+		const subCmdName = interaction.options.getSubcommand();
+		for (const subCmd of cmd.options) {
+			if (subCmd.name !== subCmdName) continue;
+			return [true, subCmd.runInteraction];
+		}
 	}
 	return [true, cmd.runInteraction];
 };

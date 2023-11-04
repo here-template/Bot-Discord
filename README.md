@@ -36,7 +36,8 @@
 - ```botPermissions: [""],``` les permissions supplémentaires nécessaires au bot *(par défaut: ```sendMessages```)*
 - ```devOnly: true,``` *(par défaut: false)*
 - ```cooldown: t,``` t= les temps entre 2 executions de la commande, en seconde *(par défaut: ```0s```)*
-- ```mpLock: true,``` Si true, la commande ne peut être execute que dans un salon d'un serveur et non en mp *(par
+- ```mp: true,``` Si true, la commande peut être execute en mp, si false elle peut etre executer que sur un serveur *(
+  par
   défaut: ```false```)*
 
 ## Installation :
