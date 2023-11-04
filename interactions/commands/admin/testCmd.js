@@ -2,7 +2,7 @@ const {ChatInputCommandInteraction, Client} = require("discord.js");
 
 module.exports = {
 	name: "test",
-	description: "Une commande de test",
+	description: "Une commande de test.",
 	devOnly: true,
 	/**
 	 * @param {ChatInputCommandInteraction} interaction

@@ -2,7 +2,7 @@ const {ChatInputCommandInteraction, Client, ActionRowBuilder, StringSelectMenuBu
 
 module.exports = {
 	name: "sendstringselect",
-	description: "Envoie un string selects de test",
+	description: "Envoie un string selects de test.",
 	/**
 	 * @param {ChatInputCommandInteraction} interaction
 	 * @param {Client} client
