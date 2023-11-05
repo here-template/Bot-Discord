@@ -1,13 +1,20 @@
 const {yellow, redBright} = require("cli-color");
 const fs = require("fs");
 
+//const listFile = [];
+const listNameCommand = [];
+
 module.exports = (client) => {
+	let dirs = fs.readdirSync("./interactions/commands/");
+	if (dirs.length === 0) return;
 	console.log(yellow.underline("Commandes chargées :"));
-	let dirs = fs.readdirSync("./interactions/commands/").filter((file) => !file.includes("."));
+	dirs = dirs.filter((file) => !file.includes("."));
 	dirs.push("../commands");
 	dirs.forEach((dir) => {
+		// Check if the file is not double loaded
 		const files = fs.readdirSync(`./interactions/commands/${dir}/`).filter((file) => file.endsWith(".js"));
-		if (files.length !== 0) console.log(yellow.bold(`> ${dir === "../commands" ? "sans catégorie" : dir} :`));
+		if (files.length === 0) return;
+		console.log(yellow.bold(`> ${dir === "../commands" ? "sans catégorie" : dir} :`));
 		files.forEach((file) => {
 			let commande = require(`../../interactions/commands/${dir}/${file}`);
 			if (commande && !commande.subCommande) {
