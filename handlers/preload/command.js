@@ -11,8 +11,7 @@ module.exports = (client) => {
 		files.forEach((file) => {
 			let commande = require(`../../interactions/commands/${dir}/${file}`);
 			if (commande && !commande.subCommande) {
-				if (commande.name === undefined) return console.log(redBright.bold(`>> La commande dans commandes/${dir === "../commands" ? "" : dir + "/"}${file} n'a pas de name !`));
-				if (commande.description === undefined) return console.log(redBright.bold(`>> La commande dans commandes/${dir === "../commands" ? "" : dir + "/"}${file} n'a pas de description !`));
+				if (!verifCmdPAram(commande, dir, file)) return;
 				//met le cooldown en ms et ajuste le temps max
 				if (commande.cooldown) {
 					commande.cooldown *= 1000;
@@ -33,7 +32,6 @@ module.exports = (client) => {
 				commande.userPermissions.push("SendMessages");
 				commande.botPermissions.push("SendMessages");
 				
-				//à faire : vérif taille description ?
 				//upload dans le bot
 				if (commande.commandeGroupe && dir !== "../commands") {
 					commande.isCommandeGroupe = true;
@@ -43,14 +41,7 @@ module.exports = (client) => {
 						let subCommande = require(`../../interactions/commands/${dir}/${subCommandeFile}`);
 						if (subCommande) {
 							if (subCommande.name === commande.name || !subCommande.subCommande) continue;
-							if (subCommande.name === undefined) {
-								console.log(redBright.bold(`>> La commande dans commands/${dir === "../commands" ? "" : dir + "/"}${subCommandeFile} n'a pas de name !`));
-								continue;
-							}
-							if (subCommande.description === undefined) {
-								console.log(redBright.bold(`>> La commande dans commands/${dir === "../commands" ? "" : dir + "/"}${subCommandeFile} n'a pas de description !`));
-								continue;
-							}
+							if (!verifCmdPAram(subCommande, dir, subCommandeFile)) continue;
 							subCommande.type = 1;
 							commande.options.push(subCommande);
 							console.log(yellow(`  > ${commande.name} ${subCommande.name}`));
@@ -62,7 +53,28 @@ module.exports = (client) => {
 				}
 				client.commands.set(commande.name, commande);
 			}
-			
 		});
 	});
 };
+
+function verifCmdPAram(commande, dir, file) {
+	//verification de la presence d'un name et description
+	if (commande.name === undefined || commande.name.length === 0) {
+		console.log(redBright.bold(`>> La commande dans commandes/${dir === "../commands" ? "" : dir + "/"}${file} n'a pas de name !`));
+		return false;
+	}
+	if (commande.description === undefined || commande.description.length === 0) {
+		console.log(redBright.bold(`>> La commande dans commandes/${dir === "../commands" ? "" : dir + "/"}${file} n'a pas de description !`));
+		return false;
+	}
+	//verification de la taille des name et description
+	if (commande.name.length > 32) {
+		console.log(redBright.bold(`>> La commande dans commandes/${dir === "../commands" ? "" : dir + "/"}${file} a un nom de plus de 32 caractères (${commande.name.length}/32) !`));
+		return false;
+	}
+	if (commande.description.length > 100) {
+		console.log(redBright.bold(`>> La commande dans commandes/${dir === "../commands" ? "" : dir + "/"}${file} a une description de plus de 100 caractères (${commande.description.length}/100) !`));
+		return false;
+	}
+	return true;
+}
