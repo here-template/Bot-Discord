@@ -21,7 +21,8 @@ client.on(Events.InteractionCreate, async (interaction) => {
 		if (debug) console.log(`> ${Date.now() - interaction.createdTimestamp}ms`);
 	} catch (err) {
 		if (!err) return;
-		console.log(redBright.bold(`>> Erreur dans ${interaction.commandName} :`));
+		const interName = interaction.commandName ?? interaction.customId ?? "inconue";
+		console.log(redBright.bold(`>> Erreur dans ${interName} :`));
 		console.log(err);
 		let cmdPing = "";
 		if (interaction.isChatInputCommand() && interaction.command.name != undefined) {
