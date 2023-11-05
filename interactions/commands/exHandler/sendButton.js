@@ -2,7 +2,7 @@ const {ChatInputCommandInteraction, Client, ActionRowBuilder, ButtonBuilder, But
 
 module.exports = {
 	name: "sendbutton",
-	description: "Envoie un bouton de test",
+	description: "Envoie un bouton de test.",
 	userOnly: true,
 	/**
 	 * @param {ChatInputCommandInteraction} interaction

@@ -9,7 +9,7 @@ const {
 
 module.exports = {
 	name: "sendmodal",
-	description: "Envoie un bouton de test",
+	description: "Envoie un bouton de test.",
 	/**
 	 * @param {ChatInputCommandInteraction} interaction
 	 * @param {Client} client
