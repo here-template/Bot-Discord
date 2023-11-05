@@ -24,8 +24,8 @@ module.exports = (client) => {
 				if (!commande.mp) commande.mp = false;
 				
 				//la categorie
+				if (commande.category === "") commande.category = "sans_categorie";
 				if (!commande.commandeGroupe) commande.category = dir === "../commands" ? "sans_categorie" : dir.toLowerCase();
-				
 				//les permissions (par défaut)
 				if (!commande.userPermissions) commande.userPermissions = [];
 				if (!commande.botPermissions) commande.botPermissions = [];
@@ -36,6 +36,7 @@ module.exports = (client) => {
 				if (commande.commandeGroupe && dir !== "../commands") {
 					commande.isCommandeGroupe = true;
 					commande.options = [];
+					console.log(yellow(`(${commande.category})`));
 					const cmdGroupe = fs.readdirSync(`./interactions/commands/${dir}/`).filter((file) => file.endsWith(".js"));
 					for (const subCommandeFile of cmdGroupe) {
 						let subCommande = require(`../../interactions/commands/${dir}/${subCommandeFile}`);
