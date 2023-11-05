@@ -1,4 +1,4 @@
-const clc = require("cli-color");
+const {yellow, redBright, blackBright} = require("cli-color");
 const mysql = require("mysql");
 const config = require("../config.json");
 
@@ -14,13 +14,13 @@ async function connectionPool(msg = true) {
 	// Envoie le retour d'un message en fonction de l'etat de la base de donnée
 	pool.query("SELECT test FROM test WHERE test = 'good_start'", function (err) { // Test de connection à la base de donnée (bien vérifier le wiki)
 		if (err) {
-			console.log(clc.redBright("Erreur connection base de données.\n" + err));
-			console.log(clc.redBright.bold(">> Shutdown ! <<"));
+			console.log(redBright("Erreur connection base de données.\n" + err));
+			console.log(redBright.bold(">> Shutdown ! <<"));
 			const client = require("../index").client;
 			return client.destroy(); // Shutdown le bot si erreur de connection
 		}
 		if (msg) {
-			console.log(clc.blackBright("Connection à la base de données réussite !"));
+			console.log(blackBright("Connection à la base de données réussite !"));
 		}
 	});
 	return pool;
@@ -47,11 +47,12 @@ module.exports.query = async (re) => {
 			});
 		});
 		if (process.env.DEBUG === "true") {
-			console.log(clc.yellow(`> Requête MySQL : "${re}"\n${result}`));
+			console.log(yellow(`> Requête MySQL : "${re}"`));
+			console.table(await result);
 		}
 		return result;
 	} catch (error) {
-		console.log("Mysql error dans query()");
+		console.log(redBright("Mysql error dans query()"));
 		return result;
 	}
 };
