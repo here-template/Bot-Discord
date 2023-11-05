@@ -38,12 +38,14 @@ module.exports = {
 						}
 						return cmds.join(", ");
 					}).join(", ");
-					noArgsEmbed.addFields([
-						{
-							name: `__> ${(category !== "sans_categorie" ? category : "sans catégorie").replace(/(^\w|\s\w)/g, (firstLetter) => firstLetter.toUpperCase())} :__`,
-							value: `${cmdsUtilisable === "" ? "Pas de commande" : cmdsUtilisable}`,
-						},
-					]);
+					if (cmdsUtilisable.length > 0) {
+						noArgsEmbed.addFields([
+							{
+								name: `__> ${(category !== "sans_categorie" ? category : "sans catégorie").replace(/(^\w|\s\w)/g, (firstLetter) => firstLetter.toUpperCase())} :__`,
+								value: `${cmdsUtilisable === "" ? "Pas de commande" : cmdsUtilisable}`,
+							},
+						]);
+					}
 					
 				}
 			}
