@@ -17,7 +17,7 @@ module.exports = (client, interaction) => {
 	if (!select) return [false];
 	//Vérifie si l'utilisateur est owner en cas de commande admin
 	if (select.admin && !client.config.owner.includes(interaction.user.id)) {
-		return interaction.reply({content: "Vous n'êtes pas admin du bot !", ephemeral: true});
+		return [false, {content: "Vous n'êtes pas admin du bot !", ephemeral: true}];
 	}
 	return [true, select.runInteraction];
 };
