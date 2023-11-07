@@ -21,13 +21,12 @@ client.on(Events.InteractionCreate, async (interaction) => {
 		if (debug) console.log(`> ${Date.now() - interaction.createdTimestamp}ms`);
 	} catch (err) {
 		if (!err) return;
-		const interName = interaction.commandName ?? interaction.customId ?? "inconue";
-		console.log(redBright.bold(`>> Erreur dans ${interName} :`));
+		console.log(redBright.bold(`>> Erreur dans ${interaction.commandName ?? interaction.customId ?? "inconue"} :`));
 		console.log(err);
 		let cmdPing = "";
-		if (interaction.isChatInputCommand() && interaction.command.name != undefined) {
-			cmdPing = ` (</${interaction.command.name}:${client.application.commands.cache.find((x) => x.name === interaction.command.name).id}>)`;
-			if (interaction.commandType === 1) cmdPing = ` (</${interaction.command.name} ${interaction.options.getSubcommand()}:${client.application.commands.cache.find((x) => x.name === interaction.command.name).id}>)`;
+		if (interaction.isChatInputCommand() && interaction.commandName != undefined) {
+			cmdPing = ` (</${interaction.commandName}:${client.application.commands.cache.find((x) => x.name === interaction.command.name).id}>)`;
+			if (interaction.options._subcommand ?? false) cmdPing = ` (</${interaction.command.name} ${interaction.options.getSubcommand()}:${client.application.commands.cache.find((x) => x.name === interaction.command.name).id}>)`;
 		}
 		if (debug) console.log(`> ${Date.now() - interaction.createdTimestamp}ms`);
 		if (Date.now() - interaction.createdTimestamp > 3000 && !interaction.deferred) console.log(redBright.bold(`/!\\ Cette interaction a mis plus de 3000ms (${Date.now() - interaction.createdTimestamp}ms)\nL'utilisation de "interaction.deferReply();" est conseiller.`));
