@@ -6,12 +6,5 @@
 	"id_discord_user"
   ],
   "invite": "Invitation discord",
-  "bdd": {
-	"enable": false,
-	"host": "localhost",
-	"database": "database",
-	"user": "root",
-	"password": "password",
-	"port": 3306
-  }
+  "bdd": false
 }
