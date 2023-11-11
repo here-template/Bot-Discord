@@ -1,22 +1,22 @@
 {
   "name": "discord-handlerv14",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Un handler pour bot discord, il est complet, rapide et customisable.",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js",
-    "start": "node index.js"
+	"dev": "nodemon index.js",
+	"start": "node index.js"
   },
   "author": "Yourtich & Cleboost",
   "license": "ISC",
   "dependencies": {
-    "@discordjs/opus": "^0.8.0",
-    "cli-color": "2.0.3",
-    "discord.js": "^14.11.0",
-    "dotenv": "16.0.3",
-    "mysql": "^2.18.1"
+	"@discordjs/opus": "^0.8.0",
+	"cli-color": "2.0.3",
+	"discord.js": "^14.11.0",
+	"dotenv": "16.0.3",
+	"mysql": "^2.18.1"
   },
   "devDependencies": {
-    "nodemon": "^3.0.1"
+	"nodemon": "^3.0.1"
   }
 }
