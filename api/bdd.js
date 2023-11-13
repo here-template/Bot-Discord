@@ -1,7 +1,7 @@
 const {yellow, redBright, blackBright} = require("cli-color");
 const mysql = require("mysql");
 
-async function connectionPool() {
+function connectionPool() {
 	const pool = mysql.createPool({
 		//toutes les données suivantes sont à rentrée dans le fichier .ENV oue en variable environment
 		host: process.env.HOST, // Adresse de la base de donnée
@@ -10,6 +10,7 @@ async function connectionPool() {
 		password: process.env.PASSWORD, // Mot de passe de la base de donnée
 		database: process.env.DATABASE, // Nom de la base de donnée
 		connectionLimit: 30, // Nombre de connections simultanés
+		charset: "utf8mb4"
 	});
 	// Envoie le retour d'un message en fonction de l'etat de la base de donnée
 	//ici, il faut configurer le test sur une table que vous avez
@@ -18,7 +19,7 @@ async function connectionPool() {
 			console.log(redBright("Erreur connection base de données.\n" + err));
 			console.log(redBright.bold(">> Shutdown ! <<"));
 			pool.destroy();//shutdown de la connection
-			const client = require("../index").client;
+			const {client} = require("../index.js");
 			return client.destroy(); // Shutdown le bot si erreur de connection
 		}
 		console.log(blackBright("Connection à la base de données réussite !"));
@@ -34,7 +35,7 @@ module.exports.pool = bddPool;
  * @param {string} re - requete mysql que on veut executer
  */
 module.exports.query = async (re) => {
-	if (re === undefined) {
+	if (!re) {
 		console.log("requête MySQL vide !");
 		return false;
 	}
