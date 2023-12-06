@@ -64,3 +64,9 @@
 - Mettre le token de votre bot dans le fichier `.env`
 - Configurez le bot (admin/devellopeur) dans le fichier `config.json`
 - Exécuter `npm run start` et le bot se met en ligne
+
+  
+## Contributeurs :
+- Youritch Owner/Dev
+- Cleboost Owner/Dev
+- Toi peux etre ?
