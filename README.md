@@ -1,72 +1,85 @@
-# Base de bot discord.js v14 (node 18.12.1)
+# Base de bot Discord.js v14 (Node 18.12.1) 🤖
 
-## Fonctionalités :
+---
 
-### Handler :
+## 🛠️ Fonctionnalités :
 
-- Commandes (et sub commandes)
-- Buttons
-- Events
-- Selects
-- Modals
+### 🛠️ Handler :
 
-### Commandes données :
+- Commandes (et sous-commandes) ⚔️
+- Buttons 🔘
+- Events 🎉
+- Selects 🔍
+- Modals 🖼️
 
-- **/help** *génère dynamiquement le message d'aide avec les commandes existantes*
-- **/stop** *permet d'arrêter le bot* (commande admin)
-- **/test** *une commande vide pour vos tests* (commande admin)
-- **/ping** *donne la latence du bot* (en ms)
+---
+
+## 📜 Commandes disponibles :
+
+- **/help** 📚 - Génère dynamiquement le message d'aide avec les commandes existantes
+- **/stop** ⛔ - Permet d'arrêter le bot *(commande admin)*
+- **/test** 🧪 - Une commande vide pour vos tests *(commande admin)*
+- **/ping** 🏓 - Donne la latence du bot (en ms)
 - et des commandes d'exemple des différentes options
 
-### Particularité :
+---
 
-- Les commandes de la catégorie admin ne sont pas affichées dans le /help et nécessitent d'être inscrit (id discord)
-  dans le tableau owner de config.js
-- Les commandes marquées comme `devOnly: true`, nécessite d'être développeur pour être exécuté, inscrit dans le tableur
-  dev de config.js
-- Les configs sont mis dans le cache du client, pour y accéder : `client.config`
-- Le cooldown est en seconde, mais attention il se reset à chaque redémarage de bot, il est désactivé pour les commandes
-  en devOnly
-- Vous pouvez lancer le bot avec `npm run dev`, dans ce cas le bot se redémare à chaque save que vous faites, sinon
-  utiliser `node index.js` ou `npm run start`
-- Les buttons et les commandes peuvent avoir des catégories : créer un dossier et rangé le fichier dedans (allez voir
+## 💡 Particularités :
+
+- Les commandes de la catégorie admin ne sont pas affichées dans le /help et nécessitent d'être inscrites (id Discord)
+  dans le tableau owner de `config.json` 👑
+- Les commandes marquées comme `devOnly: true` nécessitent d'être développeur pour être exécutées, inscrites dans le
+  tableau dev de `config.json` 💻
+- Les configs sont mises dans le cache du client, pour y accéder : `client.config`
+- Le cooldown est en seconde, mais attention il se réinitialise à chaque redémarrage du bot, il est désactivé pour les
+  commandes en devOnly ⏱️
+- Vous pouvez lancer le bot avec `npm run dev`, dans ce cas, le bot se redémarre à chaque sauvegarde que vous faites,
+  sinon utiliser `node index.js` ou `npm run start`
+- Les buttons et les commandes peuvent avoir des catégories : créer un dossier et ranger le fichier dedans (allez voir
   les exemples)
 - Mode debug activé par défaut, configuration dans `.ENV`
 
-## Options de commandes :
+---
 
-- ```userPermissions: [""],``` les permissions supplémentaires nécessaires à l'utilisateur *(par
+## 🛠️ Options de commande :
+
+- ```userPermissions: [""],``` - Les permissions supplémentaires nécessaires à l'utilisateur *(par
   défaut: ```sendMessages```)*
-- ```botPermissions: [""],``` les permissions supplémentaires nécessaires au bot *(par défaut: ```sendMessages```)*
-- ```devOnly: true,``` *(par défaut: false)*
-- ```cooldown: t,``` t= les temps entre 2 executions de la commande, en seconde *(par défaut: ```0s```)*
-- ```mp: true,``` Si true, la commande peut être execute en mp, si false elle peut etre executer que sur un serveur *(
+- ```botPermissions: [""],``` - Les permissions supplémentaires nécessaires au bot *(par défaut: ```sendMessages```)*
+- ```devOnly: true,``` - *(par défaut: false)*
+- ```cooldown: t,``` - t= les temps entre 2 exécutions de la commande, en seconde *(par défaut: ```0s```)*
+- ```mp: true,``` - Si true, la commande peut être exécutée en MP, si false elle peut être exécutée que sur un serveur *(
   par défaut: ```false```)*
 
-### Groupe de commandes :
+---
 
-- permet de mettre plusieurs commande sous le même nom, ex : `/musique on` et `/musique off`
-- Pour cela il faut (dans un dossier) mettre les fichier des sous commande, comme des commane normale (elles on pas
-  accès aux options de commande expliqué plus haut)
-- et rajouter ```subCommande: true,``` au parametre
-- et rajouter un autre fichier de commande (celui ci sans code, donc pas de fonction runInteraction), avec :
-    - le même nom que le dossier
-    - le prametre : ```commandeGroupe: true,```
-    - et le parametre ```category: categorie,```, categorie est la categorie auque vous voullez que la commande soit
-      dedans (laisser "", si vous ne voulez aucune categorie)
-    - c'est dans cet fichier de commande que vous pouvez mettre les options de commandes
+## 🛠️ Groupe de commandes :
 
-## Installation :
+- Permet de mettre plusieurs commandes sous le même nom, ex : `/musique on` et `/musique off`
+- Pour cela, il faut (dans un dossier) mettre les fichiers des sous-commandes, comme des commandes normales (elles n'ont pas
+  accès aux options de commande expliquées plus haut)
+- et rajouter ```subCommande: true,``` au paramètre
+- et rajouter un autre fichier de commande (celui-ci sans code, donc pas de fonction `runInteraction`), avec :
+    - Le même nom que le dossier
+    - Le paramètre : ```commandeGroupe: true,```
+    - Et le paramètre ```category: categorie,```, la catégorie dans laquelle vous voulez que la commande soit
+      (laissez "", si vous ne voulez aucune catégorie)
+    - C'est dans cet fichier de commande que vous pouvez mettre les options de commandes
 
-- Faire un fork du reposite ou télécharger la derniere release (et la de-zip)
-- Ouvrir le dossier du project
-- Installez les librairies `npm i`
-- Mettre le token de votre bot dans le fichier `.env`
-- Configurez le bot (admin/devellopeur) dans le fichier `config.json`
-- Exécuter `npm run start` et le bot se met en ligne
+---
 
-  
-## Contributeurs :
+## 🚀 Installation :
+
+1. Faites un fork du repository ou téléchargez la dernière release (et la dézippez)
+2. Ouvrez le dossier du projet
+3. Installez les librairies avec `npm i`
+4. Mettez le token de votre bot dans le fichier `.env`
+5. Configurez le bot (admin/développeur) dans le fichier `config.json`
+6. Exécutez `npm run start` et le bot se met en ligne
+
+---
+
+## 🧑‍💻 Contributeurs :
 - Youritch Owner/Dev
 - Cleboost Owner/Dev
-- Toi peux etre ?
+- Peut-être toi ? 😉
