@@ -69,7 +69,7 @@ This project includes MYSQL natively, you can enable or disable this module in `
 
 ## 🤝 Contribution
 
-Contributions are welcome! If you want to improve this plugin or add new features, feel free to submit a pull request.
+Contributions are welcome! If you want to improve this bot or add new features, feel free to submit a pull request.
 
 ## ⚖️ License
 
