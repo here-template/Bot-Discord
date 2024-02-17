@@ -22,9 +22,9 @@ Before using this bot, make sure you have:
 
 ---
 
-## ⚙️ Included Mysql native
+## ⚙️ Included MySQL native
 
-This project includes MYSQL natively, you can enable or disable this module in `config.json`.
+This project includes MySQL natively, you can enable or disable this module in `config.json`.
 
 ## 📜 Default commands available:
 
