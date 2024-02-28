@@ -73,4 +73,4 @@ Contributions are welcome! If you want to improve this bot or add new features, 
 
 ## ⚖️ License
 
-This project is licensed under MIT - see the [LICENSE](https://opensource.org/license/mit) link for more details. 📜
+This project is licensed under MIT - see the [LICENSE](https://github.com/here-template/Bot-Discord/blob/main/LICENSE) link for more details. 📜
