@@ -1,6 +1,6 @@
 # 🤖 Bot Discord.js v14
 
-This repository contains a bot template for Discord.js@v14. The bot is designed with a handler to easily create commands, buttons, selections and other fun interactions.
+This repository contains a bot template for `discord.js@v14`. The bot is designed with a handler to easily create commands, buttons, selections and other fun interactions.
 
 ---
 
@@ -48,21 +48,21 @@ This project includes MySQL natively, you can enable or disable this module in `
 
 ## 🛠️ Command Options :
 
-- ```userPermissions: [""],``` - Additional permissions required by the user *(default: ```sendMessages```)*
-- ```botPermissions: [""],``` - Additional permissions required by the bot *(default: ```sendMessages```)*
-- ```devOnly: true,``` - *(if not define: false)*
-- ```cooldown: t,``` - t= time between 2 executions of the command, in seconds *(default: ```0s```)*
-- ```mp: true,``` - If true, the command can be executed in DMs; if false, it can only be executed on a server *(default: ```false```)*
+- ```userPermissions: [""]``` - Additional permissions required by the user *(default: ```sendMessages```)*
+- ```botPermissions: [""]``` - Additional permissions required by the bot *(default: ```sendMessages```)*
+- ```devOnly: true``` - *(if not define: false)*
+- ```cooldown: 2``` - Time (in seconds) between 2 executions of the command, in seconds *(default: ```0s```)*
+- ```mp: true``` - If true, the command can be executed in DMs; if false, it can only be executed on a server *(default: ```false```)*
 
 ## 🛠️ Command Group :
 
 - Allows you to group multiple commands under the same name, e.g., `/music on` and `/music off`
 - To do this, create a folder for the sub-commands and place the files inside like normal commands (they do not have access to command options explained above)
-- add ```subCommande: true,``` as a parameter
+- add ```subCommande: true``` as a parameter
 - and add another command file (this one without code, so no `runInteraction` function), with:
     - The same name as the folder
-    - The parameter: ```commandeGroupe: true,```
-    - And the parameter ```category: category,```, the category you want the command to be in (leave "" if you want no category)
+    - The parameter: ```commandeGroupe: true```
+    - And the parameter ```category: category```, the category you want the command to be in (leave "" if you want no category)
     - It's in this command file that you can put command options
 
 ---
@@ -73,4 +73,4 @@ Contributions are welcome! If you want to improve this bot or add new features, 
 
 ## ⚖️ License
 
-This project is licensed under MPL - see the [LICENSE](https://www.mozilla.org/en-US/MPL/2.0/) link for more details. 📜
+This project is licensed under MIT - see the [LICENSE](https://opensource.org/license/mit) link for more details. 📜
