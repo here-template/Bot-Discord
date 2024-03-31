@@ -8,7 +8,7 @@ This repository contains a bot template for `discord.js@v14`. The bot is designe
 
 Before using this bot, make sure you have:
 
-- **Java Development Kit (JDK)**: To develop and compile the plugin.
+- **Node.js (min v18)**: To develop and run the script.
 - **WebStorm IDEA (paid IDE)**: A recommended Javascript development environment for optimal compatibility with node.js and NPM. 🚀
 - **Alternative Java development environment**: If you prefer using another Javascript development environment, make sure it is compatible with node.js and NPM.
 
