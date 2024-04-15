@@ -1,3 +1,4 @@
+//Template made with love by Here-Template (https://github.com/here-template)
 require("dotenv").config();
 const {Client, GatewayIntentBits, Partials, Collection} = require("discord.js");
 const {greenBright, redBright} = require("cli-color");
