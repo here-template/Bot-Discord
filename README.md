@@ -50,7 +50,7 @@ This project includes MySQL natively, you can enable or disable this module in `
 
 - ```userPermissions: [""]``` - Additional permissions required by the user *(default: ```sendMessages```)*
 - ```botPermissions: [""]``` - Additional permissions required by the bot *(default: ```sendMessages```)*
-- ```devOnly: true``` - *(if not define: false)*
+- ```devOnly: true``` - *(default: ```false```)*
 - ```cooldown: 2``` - Time (in seconds) between 2 executions of the command, in seconds *(default: ```0s```)*
 - ```mp: true``` - If true, the command can be executed in DMs; if false, it can only be executed on a server *(default: ```false```)*
 
