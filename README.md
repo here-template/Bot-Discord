@@ -36,7 +36,7 @@ This project includes MySQL natively, you can enable or disable this module in `
 
 ---
 
-## 💡 Particularités :
+## 💡 Particularities :
 
 - Admin category commands are not shown in /help and require being registered (Discord ID) in the `config.json` owner array 👑
 - Commands marked as `devOnly: true` require being a developer to execute and should be registered in the `config.json` dev array 💻
