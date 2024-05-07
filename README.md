@@ -28,7 +28,7 @@
 - Le cooldown est en seconde, mais attention il se reset à chaque redémarage de bot, il est désactivé pour les commandes
   en devOnly
 - Vous pouvez lancer le bot avec `npm run dev`, dans ce cas le bot se redémare à chaque save que vous faites, sinon
-  utiliser `node index.js` ou `npm run start`
+  utiliser `node index.ts` ou `npm run start`
 - Les buttons et les commandes peuvent avoir des catégories : créer un dossier et rangé le fichier dedans (allez voir
   les exemples)
 - Mode debug activé par défaut, configuration dans `.ENV`
