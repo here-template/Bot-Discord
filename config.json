@@ -5,6 +5,5 @@
   "dev": [
 	"id_discord_user"
   ],
-  "invite": "Invitation discord",
   "bdd": false
 }

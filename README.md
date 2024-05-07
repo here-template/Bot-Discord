@@ -1,76 +1,72 @@
-# 🤖 Bot Discord.js v14
+# Base de bot discord.js v14 (node 18.12.1)
 
-This repository contains a bot template for `discord.js@v14`. The bot is designed with a handler to easily create commands, buttons, selections and other fun interactions.
+## Fonctionalités :
 
----
+### Handler :
 
-## 🛠️ Prerequisites
+- Commandes (et sub commandes)
+- Buttons
+- Events
+- Selects
+- Modals
 
-Before using this bot, make sure you have:
+### Commandes données :
 
-- **Node.js (min v18)**: To develop and run the script.
-- **WebStorm IDEA (paid IDE)**: A recommended Javascript development environment for optimal compatibility with node.js and NPM. 🚀
-- **Alternative Java development environment**: If you prefer using another Javascript development environment, make sure it is compatible with node.js and NPM.
+- **/help** *génère dynamiquement le message d'aide avec les commandes existantes*
+- **/stop** *permet d'arrêter le bot* (commande admin)
+- **/test** *une commande vide pour vos tests* (commande admin)
+- **/ping** *donne la latence du bot* (en ms)
+- et des commandes d'exemple des différentes options
 
-## 🚀 Installation
+### Particularité :
 
-1. Clone this repository to your local system.
-2. Open the project in your development environment.
-3. Edit `.env` and `config.json` with your informations
-4. Install NPM package with `npm i` command
-5. Start bot with `npm start`
+- Les commandes de la catégorie admin ne sont pas affichées dans le /help et nécessitent d'être inscrit (id discord)
+  dans le tableau owner de config.js
+- Les commandes marquées comme `devOnly: true`, nécessite d'être développeur pour être exécuté, inscrit dans le tableur
+  dev de config.js
+- Les configs sont mis dans le cache du client, pour y accéder : `client.config`
+- Le cooldown est en seconde, mais attention il se reset à chaque redémarage de bot, il est désactivé pour les commandes
+  en devOnly
+- Vous pouvez lancer le bot avec `npm run dev`, dans ce cas le bot se redémare à chaque save que vous faites, sinon
+  utiliser `node index.ts` ou `npm run start`
+- Les buttons et les commandes peuvent avoir des catégories : créer un dossier et rangé le fichier dedans (allez voir
+  les exemples)
+- Mode debug activé par défaut, configuration dans `.ENV`
 
----
+## Options de commandes :
 
-## ⚙️ Included MySQL native
+- ```userPermissions: [""],``` les permissions supplémentaires nécessaires à l'utilisateur *(par
+  défaut: ```sendMessages```)*
+- ```botPermissions: [""],``` les permissions supplémentaires nécessaires au bot *(par défaut: ```sendMessages```)*
+- ```devOnly: true,``` *(par défaut: false)*
+- ```cooldown: t,``` t= les temps entre 2 executions de la commande, en seconde *(par défaut: ```0s```)*
+- ```mp: true,``` Si true, la commande peut être execute en mp, si false elle peut etre executer que sur un serveur *(
+  par défaut: ```false```)*
 
-This project includes MySQL natively, you can enable or disable this module in `config.json`.
+### Groupe de commandes :
 
-## 📜 Default commands available:
+- permet de mettre plusieurs commande sous le même nom, ex : `/musique on` et `/musique off`
+- Pour cela il faut (dans un dossier) mettre les fichier des sous commande, comme des commane normale (elles on pas
+  accès aux options de commande expliqué plus haut)
+- et rajouter ```subCommande: true,``` au parametre
+- et rajouter un autre fichier de commande (celui ci sans code, donc pas de fonction runInteraction), avec :
+    - le même nom que le dossier
+    - le prametre : ```commandeGroupe: true,```
+    - et le parametre ```category: categorie,```, categorie est la categorie auque vous voullez que la commande soit
+      dedans (laisser "", si vous ne voulez aucune categorie)
+    - c'est dans cet fichier de commande que vous pouvez mettre les options de commandes
 
-- 📚 **/help** Dynamically generates help message with existing commands
-- ⛔ **/stop** Stops the bot *(admin command)*
-- 🧪 **/test** Empty command for testing purposes *(devOnly command)*
-- 🏓 **/ping** Displays bot latency (in ms)
-- Example commands for various options
+## Installation :
 
----
+- Faire un fork du reposite ou télécharger la derniere release (et la de-zip)
+- Ouvrir le dossier du project
+- Installez les librairies `npm i`
+- Mettre le token de votre bot dans le fichier `.env`
+- Configurez le bot (admin/devellopeur) dans le fichier `config.json`
+- Exécuter `npm run start` et le bot se met en ligne
 
-## 💡 Particularities :
-
-- Admin category commands are not shown in /help and require being registered (Discord ID) in the `config.json` owner array 👑
-- Commands marked as `devOnly: true` require being a developer to execute and should be registered in the `config.json` dev array 💻
-- Configurations are cached in the client, accessible by `client.config`
-- Cooldown is in seconds but resets on each bot restart; it's disabled for devOnly commands ⏱️
-- You can launch the bot with `npm run dev`, in which case the bot restarts with each save you make, otherwise use `node index.js` or `npm run start`
-- Buttons and commands can have categories: create a folder and place the file inside (see examples)
-- Debug mode enabled by default, configuration in `.env`
-
-## 🛠️ Command Options :
-
-- ```userPermissions: [""]``` - Additional permissions required by the user *(default: ```sendMessages```)*
-- ```botPermissions: [""]``` - Additional permissions required by the bot *(default: ```sendMessages```)*
-- ```devOnly: true``` - *(default: ```false```)*
-- ```cooldown: 2``` - Time (in seconds) between 2 executions of the command, in seconds *(default: ```0s```)*
-- ```mp: true``` - If true, the command can be executed in DMs; if false, it can only be executed on a server *(default: ```false```)*
-
-## 🛠️ Command Group :
-
-- Allows you to group multiple commands under the same name, e.g., `/music on` and `/music off`
-- To do this, create a folder for the sub-commands and place the files inside like normal commands (they do not have access to command options explained above)
-- add ```subCommande: true``` as a parameter
-- and add another command file (this one without code, so no `runInteraction` function), with:
-    - The same name as the folder
-    - The parameter: ```commandeGroupe: true```
-    - And the parameter ```category: category```, the category you want the command to be in (leave "" if you want no category)
-    - It's in this command file that you can put command options
-
----
-
-## 🤝 Contribution
-
-Contributions are welcome! If you want to improve this bot or add new features, feel free to submit a pull request.
-
-## ⚖️ License
-
-This project is licensed under MIT - see the [LICENSE](https://github.com/here-template/Bot-Discord/blob/main/LICENSE) link for more details. 📜
+  
+## Contributeurs :
+- Youritch Owner/Dev
+- Cleboost Owner/Dev
+- Toi peux etre ?
