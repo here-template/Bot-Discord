@@ -5,6 +5,7 @@ import {CustomClient} from "../class/CustomClient";
 interface Command {
     name: string;
     description: string;
+    type?: number;
     category?: string | "without category";
     commandeGroupe?: boolean | false;
     devOnly?: boolean | false;
@@ -16,4 +17,10 @@ interface Command {
     cooldown?: number | 0;
     options?: CommandInteractionOption[];
     runInteraction: (client: CustomClient, interaction: Interaction) => void;
+    runAutocomplete?: (client: CustomClient, interaction: Interaction) => void;
+}
+
+interface SubCommand extends CommandInteractionOption {
+    description: string;
+    subCommande: boolean;
 }
