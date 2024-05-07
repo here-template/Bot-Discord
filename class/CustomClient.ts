@@ -1,5 +1,6 @@
 import {Client, Collection, GatewayIntentBits, Partials} from "discord.js";
 import {Config} from "../interface/config";
+import Logger from "./logger/Logger";
 
 export class CustomClient extends Client {
     commands: Collection<unknown, unknown> | undefined;
@@ -7,6 +8,7 @@ export class CustomClient extends Client {
     selects: Collection<unknown, unknown> | undefined;
     modals: Collection<unknown, unknown> | undefined;
     config: Config | undefined;
+    logger: Logger | undefined;
 
     constructor() {
         super({

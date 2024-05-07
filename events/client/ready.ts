@@ -12,6 +12,9 @@ export default async (client: CustomClient) => {
         });
         // @ts-ignore
         await client.application.commands.set(client.commands.map((cmd) => cmd));
+
+        // Delete "Connecting to Discord..."
+        process.stdout.write('\x1B[0G\x1B[2K');
         // @ts-ignore
         console.log(blue.bold.underline(`${client.user.tag} est connecté à discord !`));
     })
