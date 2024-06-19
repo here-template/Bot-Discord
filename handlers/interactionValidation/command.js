@@ -4,7 +4,8 @@ const cooldown = new Collection();
 module.exports = async (client, interaction) => {
 	const cmd = client.commands.get(interaction.commandName);
 	if (!cmd) return [false, {content: "Cette commande ne semble pas exister !", ephemeral: true}];
-	if (!cmd.mp && interaction.channel.isDMBased()) {
+	const channel = interaction.channel ?? (await interaction.guild.channels.fetchActiveThreads()).threads.get(interaction.channelId);
+	if (!cmd.mp && channel.isDMBased()) {
 		return [false, {content: `Cette commande ne peut pas être fait en en MP !Allez sur **un serveur** pour fait votre commande.`}];
 	}
 	//Vérifie si l'utilisateur est owner en cas de commande admin
@@ -16,7 +17,7 @@ module.exports = async (client, interaction) => {
 		return [false, {content: "Commande en développement !", ephemeral: true}];
 	}
 	//Vérifie les permissions :
-	if ((cmd.userPermissions || cmd.botPermissions) && !interaction.channel.isDMBased()) {//si dm pas permission
+	if ((cmd.userPermissions || cmd.botPermissions) && !channel.isDMBased()) {//si dm pas permission
 		//Vérifie les permissions du bot pour executer le code
 		if (!interaction.guild.members.cache.get(client.user.id).permissions.has(PermissionsBitField.resolve(cmd.botPermissions || []))) {
 			return [false, {
