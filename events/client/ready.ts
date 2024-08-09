@@ -1,6 +1,7 @@
 import {ActivityType, Events} from "discord.js";
 import {blue} from "cli-color";
 import {CustomClient} from "../../class/CustomClient";
+import {Command} from "../../interface/command";
 
 
 export default async (client: CustomClient) => {
@@ -11,7 +12,7 @@ export default async (client: CustomClient) => {
             status: "online",
         });
         // @ts-ignore
-        await client.application.commands.set(client.commands.map((cmd) => cmd));
+        await client.application.commands.set(client.commands.map((cmd:Command) => cmd.command));
 
         // Delete "Connecting to Discord..."
         process.stdout.write('\x1B[0G\x1B[2K');
