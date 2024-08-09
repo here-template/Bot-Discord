@@ -5,5 +5,7 @@
   "dev": [
 	"id_discord_user"
   ],
-  "bdd": false
+  "config": {
+    "checkCommandExists": true
+  }
 }

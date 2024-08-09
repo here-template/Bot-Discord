@@ -1,26 +1,32 @@
-
-import {CommandInteractionOption, Interaction} from "discord.js";
+import {
+    AutocompleteInteraction,
+    CommandInteraction,
+    SlashCommandBuilder,
+    SlashCommandSubcommandsOnlyBuilder
+} from "discord.js";
 import {CustomClient} from "../class/CustomClient";
 
-interface Command {
-    name: string;
-    description: string;
-    type?: number;
-    category?: string | "without category";
-    commandeGroupe?: boolean | false;
-    devOnly?: boolean | false;
-    userPermissions?: string[];
-    botPermissions?: string[];
-    isCommandeGroupe?: boolean | false;
-    subCommande?: boolean | false;
-    mp?: boolean | false;
-    cooldown?: number | 0;
-    options?: CommandInteractionOption[];
-    runInteraction: (client: CustomClient, interaction: Interaction) => void;
-    runAutocomplete?: (client: CustomClient, interaction: Interaction) => void;
+interface CommandBase {
+    command: SlashCommandBuilder | SlashCommandSubcommandsOnlyBuilder;
+    data: {
+        category?: string;
+        devOnly?: boolean;
+        cooldown?: number;
+    };
 }
 
-interface SubCommand extends CommandInteractionOption {
-    description: string;
-    subCommande: boolean;
+interface Command extends CommandBase {
+    command: SlashCommandBuilder;
+    run: (client: CustomClient, interaction: CommandInteraction) => any;
+    runAutocomplete?: (client: CustomClient, interaction: AutocompleteInteraction) => any;
+}
+
+interface SubCommand extends CommandBase {
+    command: SlashCommandSubcommandsOnlyBuilder;
+    data: CommandBase["data"] & { subCommand: true };
+}
+
+interface SubCommandRun {
+    run: (client: CustomClient, interaction: CommandInteraction) => any;
+    runAutocomplete?: (client: CustomClient, interaction: AutocompleteInteraction) => any;
 }

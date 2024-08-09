@@ -7,6 +7,7 @@ export class CustomClient extends Client {
     buttons: Collection<unknown, unknown> | undefined;
     selects: Collection<unknown, unknown> | undefined;
     modals: Collection<unknown, unknown> | undefined;
+    contextMenus: Collection<unknown, unknown> | undefined;
     config: Config | undefined;
     logger: Logger | undefined;
 

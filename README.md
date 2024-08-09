@@ -5,7 +5,7 @@
 ### Handler :
 
 - Commandes (et sub commandes)
-- Buttons
+- Button
 - Events
 - Selects
 - Modals
