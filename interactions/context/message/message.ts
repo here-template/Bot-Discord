@@ -1,12 +1,12 @@
 import {ContextMenuCommandBuilder, MessageContextMenuCommandInteraction} from "discord.js";
 import {CustomClient} from "../../../class/CustomClient";
-import {ContextMenu} from "../../../interface/contextMenu";
+import {Context} from "../../../interface/context";
 
 // noinspection JSUnusedGlobalSymbols
 export default {
     command: new ContextMenuCommandBuilder()
-        .setName("message"),
+        .setName("test1"),
     async run(client: CustomClient, interaction: MessageContextMenuCommandInteraction) {
         return interaction.reply({content: `Message cliqué : \`${interaction.targetMessage}\``})
     }
-} as ContextMenu;
+} as Context;

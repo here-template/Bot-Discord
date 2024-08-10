@@ -5,7 +5,7 @@ import {
 } from "discord.js";
 import {CustomClient} from "../class/CustomClient";
 
-interface ContextMenu {
+interface Context {
     command: ContextMenuCommandBuilder
     run(client: CustomClient, interaction: UserContextMenuCommandInteraction | MessageContextMenuCommandInteraction): any
 }
