@@ -8,6 +8,6 @@ datasource db {
 }
 
 model User {
-  id    Int @id
-  money Int @default(0)
+  id    String @id
+  money Int    @default(0)
 }

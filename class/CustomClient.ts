@@ -1,6 +1,7 @@
-import {Client, Collection, GatewayIntentBits, Partials} from "discord.js";
-import {Config} from "../interface/config";
-import Logger from "./logger/Logger";
+import {Client, Collection, GatewayIntentBits, Partials} from 'discord.js';
+import {Config} from '../interface/config';
+import Logger from './logger/Logger';
+import {PrismaClient} from '@prisma/client';
 
 export class CustomClient extends Client {
     commands: Collection<unknown, unknown> | undefined;
@@ -10,6 +11,7 @@ export class CustomClient extends Client {
     contextMenus: Collection<unknown, unknown> | undefined;
     config: Config | undefined;
     logger: Logger | undefined;
+    db: PrismaClient;
 
     constructor() {
         super({
@@ -32,9 +34,10 @@ export class CustomClient extends Client {
                 GatewayIntentBits.GuildVoiceStates,
                 GatewayIntentBits.GuildWebhooks,
                 GatewayIntentBits.Guilds,
-                GatewayIntentBits.MessageContent,
+                GatewayIntentBits.MessageContent
             ],
-            partials: [Partials.Channel, Partials.User, Partials.Reaction, Partials.Message, Partials.GuildMember, Partials.GuildScheduledEvent, Partials.ThreadMember],
+            partials: [Partials.Channel, Partials.User, Partials.Reaction, Partials.Message, Partials.GuildMember, Partials.GuildScheduledEvent, Partials.ThreadMember]
         });
+        this.db = new PrismaClient();
     }
 }
