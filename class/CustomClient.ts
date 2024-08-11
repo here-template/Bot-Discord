@@ -1,7 +1,7 @@
 import {Client, Collection, GatewayIntentBits, Partials} from 'discord.js';
 import {Config} from '../interface/config';
 import Logger from './logger/Logger';
-import {PrismaClient} from '@prisma/client';
+import {PrismaClient} from '../prisma/client';
 
 export class CustomClient extends Client {
     commands: Collection<unknown, unknown> | undefined;
