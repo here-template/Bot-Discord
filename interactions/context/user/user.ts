@@ -1,12 +1,17 @@
-import {ContextMenuCommandBuilder, UserContextMenuCommandInteraction} from "discord.js";
-import {CustomClient} from "../../../class/CustomClient";
-import {Context} from "../../../interface/context";
+import {ContextMenuCommandBuilder, UserContextMenuCommandInteraction} from 'discord.js';
+import {CustomClient} from '../../../class/CustomClient';
+import {Context} from '../../../interface/context';
 
 // noinspection JSUnusedGlobalSymbols
 export default {
     command: new ContextMenuCommandBuilder()
-        .setName("test2"),
+        .setName('money'),
     async run(client: CustomClient, interaction: UserContextMenuCommandInteraction) {
-        return interaction.reply({content: `Tu as cliqué sur ${interaction.targetUser}`})
+        const money = await client.db.user.findUnique({
+            where: {id: interaction.targetUser.id},
+            select: {money: true}
+        });
+        if (!money) return interaction.reply({content: 'Cet utilisateur n\'a pas encore d\'argent !'});
+        return interaction.reply({content: `Cet utilisateur a ${money.money}€`});
     }
 } as Context;
