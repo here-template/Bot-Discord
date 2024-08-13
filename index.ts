@@ -4,32 +4,15 @@
 // Created By: Cleboost & Youritch in My-Template Organization
 // Description: Main file of the bot
 
-
 import {CustomClient} from './class/CustomClient';
 import * as dotenv from 'dotenv';
-import {Collection} from 'discord.js';
 import {greenBright, magenta, redBright} from 'cli-color';
-import Logger from './class/logger/Logger';
-// @ts-ignore
-import configFile from './config.json';
-import {Config} from './interface/config';
 import * as path from 'node:path';
 
 dotenv.config();
 
 
 const client: CustomClient = new CustomClient();
-const logger: Logger = new Logger();
-
-const config: Config = configFile as Config;
-client.config = config;
-client.logger = logger;
-
-client.commands = new Collection();
-client.buttons = new Collection();
-client.selects = new Collection();
-client.modals = new Collection();
-client.contextMenus = new Collection();
 
 export {client};
 

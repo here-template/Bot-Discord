@@ -2,15 +2,17 @@ import {Client, Collection, GatewayIntentBits, Partials} from 'discord.js';
 import {Config} from '../interface/config';
 import Logger from './logger/Logger';
 import {PrismaClient} from '../prisma/client';
+// @ts-ignore
+import configFile from '../config.json';
 
 export class CustomClient extends Client {
-    commands: Collection<unknown, unknown> | undefined;
-    buttons: Collection<unknown, unknown> | undefined;
-    selects: Collection<unknown, unknown> | undefined;
-    modals: Collection<unknown, unknown> | undefined;
-    contextMenus: Collection<unknown, unknown> | undefined;
-    config: Config | undefined;
-    logger: Logger | undefined;
+    commands: Collection<unknown, unknown>;
+    buttons: Collection<unknown, unknown>;
+    selects: Collection<unknown, unknown>;
+    modals: Collection<unknown, unknown>;
+    contextMenus: Collection<unknown, unknown>;
+    config: Config;
+    logger: Logger;
     db: PrismaClient;
 
     constructor() {
@@ -38,6 +40,15 @@ export class CustomClient extends Client {
             ],
             partials: [Partials.Channel, Partials.User, Partials.Reaction, Partials.Message, Partials.GuildMember, Partials.GuildScheduledEvent, Partials.ThreadMember]
         });
+        this.commands = new Collection();
+        this.buttons = new Collection();
+        this.selects = new Collection();
+        this.modals = new Collection();
+        this.contextMenus = new Collection();
+
+        this.logger = new Logger();
+        this.config = configFile as Config;
+
         this.db = new PrismaClient();
     }
 }
