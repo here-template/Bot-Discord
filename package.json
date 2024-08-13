@@ -1,22 +1,27 @@
 {
   "name": "discord-handlerv14",
-  "version": "2.1.2",
+  "version": "3.0.0",
   "description": "Un handler pour bot discord, il est complet, rapide et customisable.",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
-	"dev": "nodemon index.js",
-	"start": "node index.js"
+    "dev": "npx prisma generate && nodemon index.ts",
+    "start": "npx prisma ts-node index.ts",
+    "build": "tsc",
+    "bdd": "npx prisma studio"
   },
   "author": "Yourtich & Cleboost",
   "license": "ISC",
   "dependencies": {
-	"@discordjs/opus": "^0.9.0",
-	"cli-color": "2.0.4",
-	"discord.js": "^14.15.3",
-	"dotenv": "16.4.5",
-	"mysql2": "^3.11.0"
+    "@discordjs/opus": "0.9.0",
+    "@prisma/client": "^5.17.0",
+    "cli-color": "2.0.3",
+    "discord.js": "14.15.2",
+    "dotenv": "16.0.3"
   },
   "devDependencies": {
-	"nodemon": "^3.1.4"
+    "@types/cli-color": "2.0.6",
+    "globals": "^15.9.0",
+    "nodemon": "3.1.0",
+    "prisma": "^5.17.0"
   }
 }
