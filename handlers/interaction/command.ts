@@ -48,7 +48,7 @@ export default async (client: CustomClient, interaction: CommandInteraction | an
         ephemeral: true
     });
 
-    return import(path.join("..", "..", pathToSubCmd)).then((mod) => mod.run(client, interaction));
+    return import(path.join("..", "..", pathToSubCmd)).then(mod => mod.default).then((mod) => mod.run(client, interaction));
 }
 
 function isSubCommand(cmd: Command | SubCommand): cmd is SubCommand {
