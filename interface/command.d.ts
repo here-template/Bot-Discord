@@ -1,7 +1,6 @@
 import {
     AutocompleteInteraction,
     ChatInputCommandInteraction,
-    CommandInteraction,
     CommandInteractionOptionResolver,
     SlashCommandBuilder,
     SlashCommandSubcommandsOnlyBuilder
@@ -28,12 +27,11 @@ interface SubCommand extends CommandBase {
     data: CommandBase['data'] & { subCommand: true };
 }
 
-interface SubCommandRun {
-    run: (client: CustomClient, interaction: CommandInteraction | ChatInputCommandInteraction) => any;
+interface SubCommandRun{
+    run: (client: CustomClient, interaction: ChatInputCommandInteraction) => any;
     runAutocomplete?: (client: CustomClient, interaction: AutocompleteInteraction) => any;
+    data: CommandBase['data'];
 }
-
-//add CommandInteractionResolver on CommandInteraction.options
 
 declare module 'discord.js' {
     interface CommandInteraction {

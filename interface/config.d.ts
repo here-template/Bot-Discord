@@ -1,9 +1,10 @@
 import {Snowflake} from "discord.js";
 
 export interface Config {
-    owner: [Snowflake];
+    admin: [Snowflake];
     dev: [Snowflake];
     config: {
         checkCommandExists: boolean;
-    }
+    },
+    adminCategory: Array<string>; // Category name
 }

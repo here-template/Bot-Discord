@@ -1,11 +1,14 @@
 {
-  "owner": [
-	"id_discord_user"
+  "admin": [
+    "id_discord_user"
   ],
   "dev": [
-	"id_discord_user"
+    "id_discord_user"
   ],
   "config": {
     "checkCommandExists": true
-  }
+  },
+  "adminCategory": [
+    "admin"
+  ]
 }

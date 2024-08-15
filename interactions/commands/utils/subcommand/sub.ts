@@ -7,7 +7,6 @@ export default {
     async run(client: CustomClient, interaction: CommandInteraction) {
         return interaction.reply("Subcommand");
     },
-
     async runAutocomplete(client: CustomClient, interaction: AutocompleteInteraction) {
         return interaction.respond([{
             name: "test",

@@ -15,7 +15,7 @@ export default async (client: CustomClient): Promise<void> => {
                 console.log(`Plus de 5 context menu on était trouvé. Seulement les 5 premiers ont été chargé. Discord n'accepte pas plus de 5 context menu par application.`)
             }
             for (const file of files) {
-                const context: Context = require(path.join("..", "..", dir, file)).default;
+                const context: Context = (await import(path.join("..", "..", dir, file))).default;
                 const menuType = dir.split("\\").pop()
                 if (menuType === "user") context.command.setType(ApplicationCommandType.User);
                 if (menuType === "message") context.command.setType(ApplicationCommandType.Message);
