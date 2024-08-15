@@ -1,33 +1,35 @@
-import {CustomClient} from "../../class/CustomClient";
-import {Command, SubCommand} from "../../interface/command";
-import {CommandInteraction} from "discord.js";
-import * as fs from "node:fs";
-import * as path from "node:path";
+import {CustomClient} from '../../class/CustomClient';
+import {Command, SubCommand, SubCommandRun} from '../../interface/command';
+import {CommandInteraction, Interaction} from 'discord.js';
+import fs from 'fs';
+import path from 'path';
 
-let cooldown: Array<{ commandName: string, time: Date }>
+let cooldown: Array<{ commandName: string, time: Date }>;
 
 // @ts-ignore
 export default async (client: CustomClient, interaction: CommandInteraction | any): any => {
-    if (!client.config) return interaction.reply({content: "Le bot n'est pas encore prêt !", ephemeral: true});
-    if (interaction.isContextMenuCommand()) return import(path.join(__dirname, "context")).then((mod) => mod.default(client, interaction));
+    if (!client.config) return interaction.reply({content: 'Le bot n\'est pas encore prêt !', ephemeral: true});
+    if (interaction.isContextMenuCommand()) return import(path.join(__dirname, 'context')).then((mod) => mod.default(client, interaction));
 
     const cmd: Command | SubCommand = client.commands?.get(interaction.commandName) as Command | SubCommand;
     if (!cmd) {
         if (!client.config.config.checkCommandExists) return;
         return interaction.reply({
-            content: "Cette commande ne semble pas exister !",
+            content: 'Cette commande ne semble pas exister !',
             ephemeral: true
         });
     }
 
     if (cmd.data.devOnly && !client.config.dev.includes(interaction.user.id)) return interaction.reply({
-        content: "Cette commande est réservé au développeur !",
+        content: 'Cette commande est réservé au développeur !',
         ephemeral: true
     });
-    if (cmd.data.category === "admin" && !client.config.owner.includes(interaction.user.id)) return interaction.reply({
-        content: "Vous n'avez pas les permissions pour faire cette commande !",
+
+    if (client.config.adminCategory.includes(cmd.data.category as string) && !client.config.admin.includes(interaction.user.id)) return interaction.reply({
+        content: 'Vous n\'avez pas la permission d\'utiliser cette commande !',
         ephemeral: true
     });
+
     if (cmd.data.cooldown && !cmd.data.devOnly) {
         cooldown = cooldown.filter(c => c.time > new Date());
         if (cooldown.find(c => c.commandName === cmd.command.name && c.time > new Date())) {
@@ -40,15 +42,19 @@ export default async (client: CustomClient, interaction: CommandInteraction | an
     if (!isSubCommand(cmd)) return cmd.run(client, interaction);
 
     const subCmdName: string = interaction.options.getSubcommand();
-    if (!subCmdName) return interaction.reply({content: "Cette commande ne semble pas exister !", ephemeral: true});
+    const subCmd: SubCommandRun = client.subCommands.get(`${cmd.command.name}:${subCmdName}`) as SubCommandRun;
 
-    const pathToSubCmd: string = path.join("interactions", "commands", cmd.data.category as string, interaction.commandName, `${subCmdName}.ts`);
-    if (!fs.existsSync(pathToSubCmd)) return interaction.reply({
-        content: `Cette commande existe mais n'as pas de code attaché, vérifiez que le fichier \`${pathToSubCmd}\` existe !`,
-        ephemeral: true
-    });
 
-    return import(path.join("..", "..", pathToSubCmd)).then(mod => mod.default).then((mod) => mod.run(client, interaction));
+    if (!subCmd) {
+        if (!fs.existsSync(path.join('interactions', 'commands', cmd.data.category as string, interaction.commandName))) fs.mkdirSync(path.join('interactions', 'commands', cmd.data.category as string, interaction.commandName), {recursive: true});
+        fs.copyFileSync(path.join('template', 'subCommand.temp'), path.join('interactions', 'commands', cmd.data.category as string, interaction.commandName, `${subCmdName}.ts`), fs.constants.COPYFILE_EXCL);
+        return interaction.reply({
+            content: `Cette subCommand n'existe pas, je viens de la créer pour vous ! (${subCmdName})\nVeuillez la compléter avant de l'utiliser !`,
+            ephemeral: true
+        })
+    }
+
+    return subCmd.run(client, interaction);
 }
 
 function isSubCommand(cmd: Command | SubCommand): cmd is SubCommand {

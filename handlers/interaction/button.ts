@@ -23,7 +23,7 @@ export default async (client: CustomClient, interaction: ButtonInteraction | Str
         });
     }
 
-    if (btn.admin && !client.config.owner.includes(interaction.user.id)) return interaction.reply({
+    if (btn.admin && !client.config.admin.includes(interaction.user.id)) return interaction.reply({
         content: "Vous n'avez pas la permission d'utiliser ce bouton !",
         ephemeral: true
     });

@@ -11,6 +11,8 @@ export class CustomClient extends Client {
     selects: Collection<unknown, unknown>;
     modals: Collection<unknown, unknown>;
     contextMenus: Collection<unknown, unknown>;
+    subCommands: Collection<unknown, unknown>;
+
     config: Config;
     logger: Logger;
     db: PrismaClient;
@@ -45,6 +47,7 @@ export class CustomClient extends Client {
         this.selects = new Collection();
         this.modals = new Collection();
         this.contextMenus = new Collection();
+        this.subCommands = new Collection();
 
         this.logger = new Logger();
         this.config = configFile as Config;
