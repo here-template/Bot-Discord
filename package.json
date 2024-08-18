@@ -1,6 +1,6 @@
 {
   "name": "discord-handlerv14",
-  "version": "3.1.0",
+  "version": "3.1.2",
   "description": "Un handler pour bot discord, il est complet, rapide et customisable.",
   "main": "index.ts",
   "scripts": {
@@ -20,6 +20,8 @@
   "devDependencies": {
     "@types/cli-color": "2.0.6",
     "nodemon": "3.1.4",
-    "prisma": "5.18.0"
+    "prisma": "5.18.0",
+    "ts-node": "10.4.0",
+    "typescript": "4.5.4"
   }
 }
