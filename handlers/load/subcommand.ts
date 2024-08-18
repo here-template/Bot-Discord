@@ -3,7 +3,6 @@ import * as fs from 'node:fs';
 import * as path from 'node:path';
 import {SubCommand, SubCommandRun} from '../../interface/command';
 import {redBright} from 'cli-color';
-import subcommand from '../../interactions/commands/utils/subcommand';
 
 // noinspection JSUnusedGlobalSymbols
 export default async (client: CustomClient, cmd: SubCommand): Promise<void> => {
