@@ -29,11 +29,14 @@ export default async (client: CustomClient): Promise<void> => {
 
         for (const button of buttons) {
             const btn: Button = (await import(path.join(__dirname, '..', '..', basePath, button))).default;
+
             if (!btn.customID) {
                 console.log(`The button ${button} has no customID`);
                 continue;
             }
-            if (button.includes('\\')) btn.customID = button.split('\\')[0] + ':' + btn.customID;
+
+            const directoryName = path.dirname(button).split(path.sep).pop();
+            if (directoryName && directoryName !== '.') btn.customID = `${directoryName}:${btn.customID}`;
 
             client.buttons?.set(btn.customID, btn);
         }
