@@ -18,8 +18,6 @@ export default async (client: CustomClient, interaction: StringSelectMenuInterac
         return "channel";
     }
 
-    console.log(type(interaction) + ":" + interaction.customId)
-
     const select: Select = client.selects?.get(type(interaction) + ":" + interaction.customId) as Select
     if (!select) {
         if (!client.config.config.checkCommandExists) return;
