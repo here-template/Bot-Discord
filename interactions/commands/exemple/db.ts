@@ -30,9 +30,9 @@ export default {
             .setRequired(true)
         ),
     run: async (client, interaction) => {
-        const user = interaction.options?.getUser('user') ?? interaction.user;
-        const action = interaction.options?.getString('action') ?? 'null';
-        const amount = interaction.options?.getInteger('amount') ?? 0;
+        const user = interaction.options.getUser('user') ?? interaction.user;
+        const action = interaction.options.getString('action') ?? 'null';
+        const amount = interaction.options.getInteger('amount') ?? 0;
 
 
         if (amount <= 0) return interaction.reply({content: 'Le montant doit être supérieur à 0'});
