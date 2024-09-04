@@ -20,7 +20,7 @@ export default async (client: CustomClient): Promise<void> => {
                 if ((cmd as unknown as SubCommand).data.subCommand) {
                     await subcommand(client, cmd as unknown as SubCommand);
                 }
-                if (!('command' in cmd) || (!('run' in cmd) && !((cmd as SubCommand).data.subCommand))) {
+                if (!('command' in cmd) || (!('run' in cmd) && !((cmd as unknown as SubCommand).data.subCommand))) {
                     console.log(redBright.bold(`>> La commande ${categories}/${command} n'est pas correcte !`));
                     continue;
                 }
