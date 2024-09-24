@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "npx prisma generate && nodemon index.ts",
     "start": "npx prisma generate && ts-node index.ts",
-    "build": "tsc",
+    "build": "tsc && npx prisma generate && node postbuild.js",
     "bdd": "npx prisma studio"
   },
   "author": "Yourtich & Cleboost",
