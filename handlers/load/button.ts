@@ -11,7 +11,7 @@ export default async (client: CustomClient): Promise<void> => {
         for (const content of fs.readdirSync(basePath)) {
             if (fs.lstatSync(path.join(basePath, content)).isDirectory()) {
                 for (const file of fs.readdirSync(path.join(basePath, content))) {
-                    if (!file.endsWith('.ts')) {
+                    if (!file.endsWith('.ts') || file.endsWith('.js')) {
                         continue;
                     }
 

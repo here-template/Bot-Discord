@@ -9,7 +9,7 @@ export default async (client: CustomClient): Promise<void> => {
     return await new Promise<void>(async (resolve) => {
         for (const sub of ['user', 'message']) {
             const dir = path.join(path.join('interactions', 'context'), sub);
-            const files = fs.readdirSync(dir).filter((file) => file.endsWith('.ts'));
+            const files = fs.readdirSync(dir).filter((file) => file.endsWith('.ts') || file.endsWith('.js'));
             if (files.length > 5) {
                 files.splice(5);
                 console.log(`Plus de 5 context menu on était trouvé. Seulement les 5 premiers ont été chargé. Discord n'accepte pas plus de 5 context menu par application.`);

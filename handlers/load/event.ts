@@ -6,7 +6,7 @@ import * as path from "node:path";
 export default async (client: CustomClient): Promise<void> => {
     return await new Promise<void>(async (resolve) => {
         for (const dirs of fs.readdirSync("./events/")) {
-            const files = fs.readdirSync(`./events/${dirs}/`).filter((file) => file.endsWith(".ts"));
+            const files = fs.readdirSync(`./events/${dirs}/`).filter((file) => file.endsWith(".ts") || file.endsWith(".js"));
             for (const evt of files) {
                 await import(path.join(__dirname, "..", "..", "events", dirs, evt)).then((mod) => mod.default(client));
             }
