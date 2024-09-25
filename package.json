@@ -12,6 +12,7 @@
   "author": "Yourtich & Cleboost",
   "license": "ISC",
   "dependencies": {
+    "@jest/globals": "^29.7.0",
     "@prisma/client": "5.20.0",
     "cli-color": "2.0.4",
     "discord.js": "14.16.2",
@@ -19,6 +20,7 @@
   },
   "devDependencies": {
     "@types/cli-color": "2.0.6",
+    "jest": "^29.7.0",
     "nodemon": "3.1.7",
     "prisma": "5.20.0",
     "ts-node": "10.9.2",
