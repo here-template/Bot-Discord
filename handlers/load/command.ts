@@ -8,10 +8,10 @@ import subcommand from './subcommand';
 // noinspection JSUnusedGlobalSymbols
 export default async (client: CustomClient): Promise<void> => {
     return await new Promise<void>(async (resolve) => {
-        const basePath = path.join('interactions', 'commands');
+        const basePath = path.join(__dirname, '..', '..', 'interactions', 'commands');
         for (const categories of fs.readdirSync(basePath)) {
             for (const command of fs.readdirSync(path.join(basePath, categories)).filter(file => file.endsWith('.ts') || file.endsWith('.js'))) {
-                const cmd: Command = (await import(path.join(__dirname, '..', '..', basePath, categories, command))).default;
+                const cmd: Command = (await import(path.join(basePath, categories, command))).default;
                 if (!('data' in cmd)) {
                     // @ts-ignore
                     cmd.data = {};

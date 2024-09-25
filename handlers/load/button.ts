@@ -6,7 +6,7 @@ import {Button} from '../../interface/button';
 // noinspection JSUnusedGlobalSymbols
 export default async (client: CustomClient): Promise<void> => {
     return await new Promise<void>(async (resolve) => {
-        const basePath = path.join('interactions', 'buttons');
+        const basePath = path.join(__dirname, '..', '..', 'interactions', 'buttons');
         let buttons: Array<string> = [];
         for (const content of fs.readdirSync(basePath)) {
             if (fs.lstatSync(path.join(basePath, content)).isDirectory()) {
@@ -14,21 +14,17 @@ export default async (client: CustomClient): Promise<void> => {
                     if (!file.endsWith('.ts') || file.endsWith('.js')) {
                         continue;
                     }
-
                     buttons.push(path.join(content, file));
                 }
                 continue;
             }
 
-            if (!content.endsWith('.ts')) {
-                continue;
-            }
-
+            if (!content.endsWith('.ts')) continue;
             buttons.push(content);
         }
 
         for (const button of buttons) {
-            const btn: Button = (await import(path.join(__dirname, '..', '..', basePath, button))).default;
+            const btn: Button = (await import(path.join(basePath, button))).default;
 
             if (!btn.customID) {
                 console.log(`The button ${button} has no customID`);
