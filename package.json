@@ -12,7 +12,7 @@
   "author": "Yourtich & Cleboost",
   "license": "ISC",
   "dependencies": {
-    "@prisma/client": "5.19.1",
+    "@prisma/client": "5.20.0",
     "cli-color": "2.0.4",
     "discord.js": "14.16.1",
     "dotenv": "16.4.5"
