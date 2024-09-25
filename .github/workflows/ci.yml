@@ -3,26 +3,29 @@ name: Build and Test
 on:
   pull_request:
     branches:
-      - main 
+      - main
+  push:
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '22.x'  # remplacez par la version de Node.js que vous utilisez
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22.x'  # remplacez par la version de Node.js que vous utilisez
 
-    - name: Install dependencies
-      run: npm i
+      - name: Install dependencies
+        run: npm i
 
-    - name: Run build
-      run: npm run build
+      - name: Run build
+        run: npm run build
 
     #- name: Run tests
     #  run: npm test
