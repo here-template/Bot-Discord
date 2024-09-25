@@ -1,4 +1,4 @@
-import fs from 'node:fs';
+const fs = require('node:fs');
 
 const packageJson = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 packageJson.main = 'index.js';
@@ -9,9 +9,9 @@ packageJson.scripts = {
 
 fs.writeFileSync('./dist/package.json', JSON.stringify(packageJson, null, 2));
 
-fs.copyFileSync('prisma/', 'dist/prisma/');
+fs.cpSync('prisma/', 'dist/prisma/', { recursive: true, filter: (src) => !src.endsWith('.db') });
 fs.copyFileSync('.env', 'dist/.env');
-fs.copyFileSync('config/', 'dist/config/');
+fs.copyFileSync('config.json', 'dist/config.json');
 
 const needFolder = ['interactions/context/message', 'interactions/context/user', 'interactions/buttons', 'interactions/commands', 'interactions/modals', 'interactions/selects'];
 needFolder.forEach((folder) => {
