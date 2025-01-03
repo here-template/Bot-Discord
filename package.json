@@ -15,7 +15,7 @@
     "@prisma/client": "5.21.1",
     "cli-color": "2.0.4",
     "discord.js": "14.16.2",
-    "dotenv": "16.4.5"
+    "dotenv": "16.4.7"
   },
   "devDependencies": {
     "@types/cli-color": "2.0.6",
