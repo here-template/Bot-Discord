@@ -2,6 +2,8 @@
 
 This repository contains a bot template for `discord.js@v14`. The bot is designed with a handler to easily create commands, buttons, selections and other fun interactions.
 
+> **Note:** A new version is currently in development. It will be released in the coming weeks and will update the codebase, revamp the handler, and increase flexibility for beginner developers. Stay tuned for updates! 🚀
+
 ---
 
 ## 🛠️ Prerequisites
