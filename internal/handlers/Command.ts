@@ -22,7 +22,7 @@ export default class CommandHandler extends Handler {
 					const cmd = (await import(path.join(commands, categories, command))).default;
 					if (cmd instanceof CommandGroup) continue;
 					if (!(cmd instanceof Command)) {
-						this.client.logger.error(`La commande ${underline(`${categories}/${command}`)} n'est pas correcte !`);
+						this.client.logger.error(`The command ${underline(`${categories}/${command}`)} is not correct!`);
 						continue;
 					}
 					this.collection.set(cmd.name, cmd);
