@@ -1,6 +1,12 @@
-node_modules
-*.DS_store
-.idea
-dist
-prisma/client
-*.patch
+# IDE files
+.idea/
+.vscode/
+
+# Node.js files
+node_modules/
+
+# Build files
+dist/
+
+# Environment files (sensitive data)
+.env
