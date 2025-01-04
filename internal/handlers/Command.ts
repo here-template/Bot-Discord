@@ -11,9 +11,13 @@ import Command from "../class/interactions/Command";
 import CommandGroup from "../class/interactions/CommandGroup";
 import { Events, Interaction } from "discord.js";
 import { underline } from "kolorist";
+import CommandMiddleware from "../class/middlewares/CommandMiddleware";
 
 export default class CommandHandler extends Handler {
+	private middleware: Array<CommandMiddleware> = [];
 	async load() {
+		this.middleware = this.client.middlewares.filter((middleware) => middleware instanceof CommandMiddleware) as Array<CommandMiddleware>;
+	
 		/* eslint-disable no-async-promise-executor */
 		return new Promise<void>(async (resolve) => {
 			const commands = path.join(process.cwd(), "src", "interactions", "commands");
@@ -35,7 +39,12 @@ export default class CommandHandler extends Handler {
 
 	async event() {
 		this.client.on(Events.InteractionCreate, async (interaction: Interaction) => {
+			console.log(interaction.constructor.name);
 			if (!interaction.isCommand()) return;
+			if (interaction.isContextMenuCommand()) return;
+			for (const middleware of this.middleware ) {
+				if (!middleware.execute(interaction)) return;
+			}
 			const command: Command = this.collection.get(interaction.commandName) as Command;
 			if (!command) return;
 			command.execute(this.client, interaction);

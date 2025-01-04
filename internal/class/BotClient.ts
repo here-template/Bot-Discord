@@ -10,10 +10,15 @@ import Command from "./interactions/Command";
 import { Logger } from "./Logger";
 import Config from "../types/config";
 import configFile from "../../config";
+import ComandMiddleware from "./middlewares/CommandMiddleware";
+import ButtonMiddleware from "./middlewares/ButtonMiddleware";
+import fs from "node:fs";
+import path from "path";
 
 export class BotClient extends Client {
 	logger: Logger = new Logger();
 	config: Config = configFile;
+	middlewares: Array<ComandMiddleware | ButtonMiddleware> = [];
 	constructor() {
 		super({
 			intents: [
@@ -50,6 +55,30 @@ export class BotClient extends Client {
 		}
 
 		const handlers = [import("../handlers/Command")];
+
+		await fs.promises
+			.readdir(path.join(process.cwd(), "src", "middlewares"))
+			.then(async (files) => {
+				for (const file of files) {
+					if (!file.endsWith(".ts") && !file.endsWith(".js")) {
+						this.logger.warn(`The file ${file} is not a middleware`);
+						return;
+					}
+					const middleware = (await import(path.join(process.cwd(), "src", "middlewares", file))).default;
+					if (!(middleware instanceof ComandMiddleware) && !(middleware instanceof ButtonMiddleware)) {
+						this.logger.error(`The middleware ${file} is not correct!`);
+						return;
+					}
+					this.middlewares.push(middleware);
+				}
+			})
+			.then(() => {
+				if (this.middlewares.length === 0) return
+				this.logger.info("All middlewares loaded successfully");
+			})
+			.catch((error) => {
+				this.logger.error(`Error loading middlewares: ${error.message}`);
+			});
 
 		let commandHandler: undefined | CommandHandler = undefined;
 		await Promise.all(handlers).then((modules) => {
