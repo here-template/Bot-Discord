@@ -1,31 +1,31 @@
 name: Build and Test
 
 on:
-  pull_request:
-    branches:
-      - main
-  push:
-    branches:
-      - main
+   pull_request:
+      branches:
+         - main
+   push:
+      branches:
+         - main
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+   build:
+      runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      steps:
+         - name: Checkout repository
+           uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22.x'  # remplacez par la version de Node.js que vous utilisez
+         - name: Setup Node.js
+           uses: actions/setup-node@v4
+           with:
+              node-version: "22.x"
 
-      - name: Install dependencies
-        run: npm i
+         - name: Install dependencies
+           run: npm i
 
-      - name: Run build
-        run: npm run build
+         - name: ESLint
+           run: npm run lint
 
-    #- name: Run tests
-    #  run: npm test
+         - name: Run build
+           run: npm run build
