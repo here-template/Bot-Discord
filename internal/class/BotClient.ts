@@ -14,6 +14,9 @@ import ComandMiddleware from "./middlewares/CommandMiddleware";
 import ButtonMiddleware from "./middlewares/ButtonMiddleware";
 import fs from "node:fs";
 import path from "path";
+import { Handler } from "internal/handlers/Handler";
+import SubCommandHandler from "../handlers/SubCommand";
+import SubCommandGroupe from "./interactions/SubCommandGroupe";
 
 export class BotClient extends Client {
 	logger: Logger = new Logger();
@@ -54,7 +57,8 @@ export class BotClient extends Client {
 			throw new Error("Token must be a string");
 		}
 
-		const handlers = [import("../handlers/Command")];
+		const handlers: Array<Handler> = [];
+		const handlerPromises = [import("../handlers/Command"), import("../handlers/SubCommand")];
 
 		await fs.promises
 			.readdir(path.join(process.cwd(), "src", "middlewares"))
@@ -73,20 +77,19 @@ export class BotClient extends Client {
 				}
 			})
 			.then(() => {
-				if (this.middlewares.length === 0) return
+				if (this.middlewares.length === 0) return;
 				this.logger.info("All middlewares loaded successfully");
 			})
 			.catch((error) => {
 				this.logger.error(`Error loading middlewares: ${error.message}`);
 			});
 
-		let commandHandler: undefined | CommandHandler = undefined;
-		await Promise.all(handlers).then((modules) => {
+		await Promise.all(handlerPromises).then((modules) => {
 			modules.forEach((handlerModule) => {
 				const HandlerClass = handlerModule.default;
 				const handlerInstance = new HandlerClass(this);
 				handlerInstance.load();
-				if (handlerInstance instanceof CommandHandler) commandHandler = handlerInstance;
+				handlers.push(handlerInstance);
 			});
 		});
 
@@ -98,9 +101,12 @@ export class BotClient extends Client {
 			process.exit(1);
 		});
 
-		this.once("ready", () => {
-			const commandsList = commandHandler?.getCollections().map((command) => (command as Command).getDiscordCommand());
-			this.application?.commands.set(commandsList as unknown as Command[]).catch(() => {
+		this.once("ready", async () => {
+			const commandsList = handlers.find((handler) => handler instanceof CommandHandler)?.getCollections().map((command) => (command as Command).getDiscordCommand());
+			const subCommandList = (await handlers.find((handler) => handler instanceof SubCommandHandler)?.getSubCommandGroupeDiscord() ?? []).map((subCommand:SubCommandGroupe) => subCommand.getDiscordCommand());
+			const finalList = (commandsList ?? []).concat(subCommandList ?? []);
+		
+			this.application?.commands.set(finalList as unknown as Command[]).catch(() => {
 				this.logger.error("Error while sending commands to Discord");
 				process.exit(1);
 			});

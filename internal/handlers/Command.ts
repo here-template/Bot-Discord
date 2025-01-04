@@ -8,7 +8,7 @@ import { Handler } from "./Handler";
 import path from "path";
 import fs from "node:fs";
 import Command from "../class/interactions/Command";
-import CommandGroup from "../class/interactions/CommandGroup";
+import SubCommandGroupe from "../class/interactions/SubCommandGroupe";
 import { Events, Interaction } from "discord.js";
 import { underline } from "kolorist";
 import CommandMiddleware from "../class/middlewares/CommandMiddleware";
@@ -24,7 +24,7 @@ export default class CommandHandler extends Handler {
 			for (const categories of fs.readdirSync(commands)) {
 				for (const command of fs.readdirSync(path.join(commands, categories)).filter((file) => file.endsWith(".ts") || file.endsWith(".js"))) {
 					const cmd = (await import(path.join(commands, categories, command))).default;
-					if (cmd instanceof CommandGroup) continue;
+					if (cmd instanceof SubCommandGroupe) continue;
 					if (!(cmd instanceof Command)) {
 						this.client.logger.error(`The command ${underline(`${categories}/${command}`)} is not correct!`);
 						continue;
@@ -39,9 +39,9 @@ export default class CommandHandler extends Handler {
 
 	async event() {
 		this.client.on(Events.InteractionCreate, async (interaction: Interaction) => {
-			console.log(interaction.constructor.name);
 			if (!interaction.isCommand()) return;
 			if (interaction.isContextMenuCommand()) return;
+			if (interaction.options.getSubcommand(false)) return;
 			for (const middleware of this.middleware ) {
 				if (!middleware.execute(interaction)) return;
 			}

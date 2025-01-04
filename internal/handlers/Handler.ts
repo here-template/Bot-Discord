@@ -8,7 +8,7 @@ import { Collection } from "discord.js";
 import { BotClient } from "../class/BotClient";
 
 export class Handler {
-	protected collection: Collection<unknown, unknown> = new Collection();
+	protected collection: Collection<string, unknown> = new Collection();
 	client: BotClient;
 
 	constructor(client: BotClient) {

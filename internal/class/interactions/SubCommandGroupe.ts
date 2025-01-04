@@ -6,8 +6,12 @@
 
 import { SlashCommandBuilder } from "discord.js";
 
-export default class CommandGroup extends SlashCommandBuilder {
+export default class SubCommandGroupe extends SlashCommandBuilder {
 	constructor() {
 		super();
+	}
+
+	getDiscordCommand() {
+		return this.toJSON();
 	}
 }
