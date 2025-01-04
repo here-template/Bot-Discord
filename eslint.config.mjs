@@ -1,19 +1,19 @@
 import globals from "globals";
-import pluginJs from "@eslint/js";
-import tseslint from "typescript-eslint";
+import js from "@eslint/js";
+import ts from "typescript-eslint";
 import headers from "eslint-plugin-headers";
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
 	{ files: ["**/*.{js,mjs,cjs,ts}"] },
 	{ languageOptions: { globals: globals.node } },
-	pluginJs.configs.recommended,
-	...tseslint.configs.recommended,
+	js.configs.recommended,
+	...ts.configs.recommended,
 	{
 		plugins: {
 			headers,
 		},
-		files: ["internal/**/*.ts"],
+		files: ["internal/**/*.ts","index.ts"],
 		rules: {
 			"headers/header-format": [
 				"error",
