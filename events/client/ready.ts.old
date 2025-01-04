@@ -1,7 +1,7 @@
 import {ActivityType, ClientUser, Events} from 'discord.js';
 import {blue} from 'cli-color';
 import {CustomClient} from '../../class/CustomClient';
-import {Command} from '../../interface/command';
+import {Command} from '../../internal/interface/command';
 
 // noinspection JSUnusedGlobalSymbols
 export default async (client: CustomClient) => {
