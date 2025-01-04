@@ -1,6 +1,6 @@
 import {ContextMenuCommandBuilder, MessageContextMenuCommandInteraction} from "discord.js";
 import {CustomClient} from "../../../class/CustomClient";
-import {Context} from "../../../interface/context";
+import {Context} from "../../../../internal/interface/context";
 
 // noinspection JSUnusedGlobalSymbols
 export default {

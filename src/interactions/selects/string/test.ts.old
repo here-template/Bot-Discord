@@ -1,6 +1,6 @@
 import {StringSelectMenuInteraction} from "discord.js";
 import {CustomClient} from "../../../class/CustomClient";
-import {Select} from "../../../interface/select";
+import {Select} from "../../../../internal/interface/select";
 
 // noinspection JSUnusedGlobalSymbols
 export default {

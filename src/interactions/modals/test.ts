@@ -1,5 +1,5 @@
 import {ModalSubmitInteraction} from "discord.js";
-import {Modal} from "../../interface/modal";
+import {Modal} from "../../../internal/interface/modal";
 import {CustomClient} from "../../class/CustomClient";
 
 // noinspection JSUnusedGlobalSymbols
