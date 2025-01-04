@@ -1,27 +1,29 @@
 {
-  "name": "discord-handlerv14",
-  "version": "3.1.2",
-  "description": "Un handler pour bot discord, il est complet, rapide et customisable.",
-  "main": "index.ts",
-  "scripts": {
-    "dev": "npx prisma generate && nodemon index.ts",
-    "start": "npx prisma generate && ts-node index.ts",
-    "build": "tsc && npx prisma generate && node postbuild.js",
-    "bdd": "npx prisma studio"
-  },
-  "author": "Yourtich & Cleboost",
-  "license": "ISC",
-  "dependencies": {
-    "@prisma/client": "5.21.1",
-    "cli-color": "2.0.4",
-    "discord.js": "14.16.2",
-    "dotenv": "16.4.5"
-  },
-  "devDependencies": {
-    "@types/cli-color": "2.0.6",
-    "nodemon": "3.1.7",
-    "prisma": "5.21.1",
-    "ts-node": "10.9.2",
-    "typescript": "5.6.3"
-  }
+	"name": "discord-handlerv14",
+	"version": "4.0.0",
+	"description": "A handler for Discord bot, it is complete, fast, and customizable.",
+	"main": "internal/index.ts",
+	"scripts": {
+		"dev": "nodemon internal/index.ts",
+		"start": "ts-node internal/index.ts",
+		"lint": "eslint .  --fix"
+	},
+	"author": "Yourtich & Cleboost",
+	"license": "ISC",
+	"dependencies": {
+		"cli-color": "2.0.4",
+		"discord.js": "14.17.2",
+		"dotenv": "16.4.5"
+	},
+	"devDependencies": {
+		"@eslint/js": "9.17.0",
+		"@types/cli-color": "2.0.6",
+		"eslint": "9.17.0",
+		"eslint-plugin-headers": "1.2.1",
+		"globals": "15.14.0",
+		"nodemon": "3.1.7",
+		"ts-node": "10.9.2",
+		"typescript": "5.7.2",
+		"typescript-eslint": "8.19.0"
+	}
 }
