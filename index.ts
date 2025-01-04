@@ -1,10 +1,10 @@
 /**
  * Copyright (c) 2025 Cleboost & Youritch from Here-Template
  * External contributor can be found on the GitHub
- * Licence: Not curently licensed
+ * Licence: on the GitHub
  */
 
-import { BotClient } from "./class/BotClient";
+import { BotClient } from "./internal/class/BotClient";
 import dotenv from "dotenv";
 
 dotenv.config();
