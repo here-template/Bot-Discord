@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2025 Cleboost & Youritch from Here-Template
  * External contributor can be found on the GitHub
- * Licence: Not curently licensed
+ * Licence: on the GitHub
  */
 
 import { Collection } from "discord.js";
