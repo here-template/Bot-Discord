@@ -1,6 +1,4 @@
-MIT License
-
-Copyright (c) 2024 Here-Template
+Licence MIT avec Restrictions Supplémentaires
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -12,8 +10,6 @@ furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
 
-You must credit Here-Template as a co-author in either the 'index.js' file or the 'package.json' file of any projects that use this software.
-
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -21,3 +17,13 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+### Additional Restrictions
+
+1. **Redistribution**: Redistribution of this software is prohibited unless it is done under this same license and with appropriate credit.
+
+2. **Modifications**: Modifications to the internal files are prohibited, except for contributions accepted by the project.
+
+3. **Credit**: Any use of this software must include appropriate credit to the original author.
+
+By using this software, you agree to the terms of this license.
