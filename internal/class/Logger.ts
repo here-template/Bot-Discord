@@ -16,4 +16,7 @@ export class Logger {
     error(message: string): void {
         console.log(bgRed(white(' ✖ ')) + ' ' + message);
     }
+    warn(message: string): void {
+        console.log(bgRed(white(' ⚠ ')) + ' ' + message);
+    }
 }
