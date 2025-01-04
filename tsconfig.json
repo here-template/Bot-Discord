@@ -9,10 +9,6 @@
 		"allowSyntheticDefaultImports": true,
 		"outDir": "./dist",
 		"sourceMap": true,
-		"baseUrl": ".",
-		"paths": {
-			"@bot/*": ["internal/*"],
-			"@src/*": ["src/*"]
-		}
+		"baseUrl": "."
 	}
 }
