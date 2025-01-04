@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2025 Cleboost & Youritch from Here-Template
  * External contributor can be found on the GitHub
- * Licence: Not curently licensed
+ * Licence: on the GitHub
  */
 
 import { Handler } from "./Handler";
@@ -10,6 +10,7 @@ import fs from "node:fs";
 import Command from "../class/interactions/Command";
 import CommandGroup from "../class/interactions/CommandGroup";
 import { Events, Interaction } from "discord.js";
+import { underline } from "kolorist";
 
 export default class CommandHandler extends Handler {
 	async load() {
@@ -21,7 +22,7 @@ export default class CommandHandler extends Handler {
 					const cmd = (await import(path.join(commands, categories, command))).default;
 					if (cmd instanceof CommandGroup) continue;
 					if (!(cmd instanceof Command)) {
-						console.log(`>> La commande ${categories}/${command} n'est pas correcte !`);
+						this.client.logger.error(`La commande ${underline(`${categories}/${command}`)} n'est pas correcte !`);
 						continue;
 					}
 					this.collection.set(cmd.name, cmd);
@@ -38,6 +39,7 @@ export default class CommandHandler extends Handler {
 			const command: Command = this.collection.get(interaction.commandName) as Command;
 			if (!command) return;
 			command.execute(this.client, interaction);
+			if (this.client.config.logger?.logCmd) this.client.logger.info(`Commande ${underline(interaction.commandName)} par ${interaction.user.username} (${interaction.user.id})`);
 		});
 	}
 }
