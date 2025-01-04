@@ -1,12 +1,18 @@
 {
-  "compilerOptions": {
-    "target": "ESNext",
-    "module": "commonjs",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "skipLibCheck": true,
-    "allowSyntheticDefaultImports": true,
-    "outDir": "./dist",
-  }
+	"compilerOptions": {
+		"target": "ESNext",
+		"module": "commonjs",
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"strict": true,
+		"skipLibCheck": true,
+		"allowSyntheticDefaultImports": true,
+		"outDir": "./dist",
+		"sourceMap": true,
+		"baseUrl": ".",
+		"paths": {
+			"@bot/*": ["internal/*"],
+			"@src/*": ["src/*"]
+		}
+	}
 }
