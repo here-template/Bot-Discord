@@ -1,0 +1,8 @@
+import { ButtonInteraction } from 'discord.js';
+import { BotClient } from '../BotClient';
+
+export class Button {
+    customID: string;
+    admin?: boolean | undefined;
+    run: (client: BotClient, interaction: ButtonInteraction) => any;
+}
