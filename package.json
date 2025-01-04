@@ -2,18 +2,21 @@
 	"name": "discord-handlerv14",
 	"version": "4.0.0",
 	"description": "A handler for Discord bot, it is complete, fast, and customizable.",
-	"main": "internal/index.ts",
+	"main": "index.ts",
+	"bin": {
+		"bot-cli": "internal/cli/index.js"
+	},
 	"scripts": {
-		"dev": "nodemon internal/index.ts",
-		"start": "ts-node internal/index.ts",
+		"dev": "nodemon index.ts",
+		"start": "ts-node index.ts",
 		"lint": "eslint .  --fix"
 	},
 	"author": "Yourtich & Cleboost",
 	"license": "ISC",
 	"dependencies": {
-		"cli-color": "2.0.4",
 		"discord.js": "14.17.2",
-		"dotenv": "16.4.5"
+		"dotenv": "16.4.5",
+		"kolorist": "1.8.0"
 	},
 	"devDependencies": {
 		"@eslint/js": "9.17.0",
