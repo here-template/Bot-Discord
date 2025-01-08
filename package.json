@@ -1,27 +1,22 @@
 {
-  "name": "discord-handlerv14",
-  "version": "3.1.2",
-  "description": "Un handler pour bot discord, il est complet, rapide et customisable.",
-  "main": "index.ts",
-  "scripts": {
-    "dev": "npx prisma generate && nodemon index.ts",
-    "start": "npx prisma generate && ts-node index.ts",
-    "build": "tsc && npx prisma generate && node postbuild.js",
-    "bdd": "npx prisma studio"
-  },
-  "author": "Yourtich & Cleboost",
-  "license": "ISC",
-  "dependencies": {
-    "@prisma/client": "5.21.1",
-    "cli-color": "2.0.4",
-    "discord.js": "14.16.2",
-    "dotenv": "16.4.7"
-  },
-  "devDependencies": {
-    "@types/cli-color": "2.0.6",
-    "nodemon": "3.1.9",
-    "prisma": "5.21.1",
-    "ts-node": "10.9.2",
-    "typescript": "5.7.2"
-  }
+	"name": "discord-handlerv14",
+	"version": "4.0.0",
+	"description": "Un handler pour bot discord, il est complet, rapide et customisable.",
+	"main": "dist/index.js",
+	"scripts": {
+		"dev": "tsup --config tsup-dev.config.ts",
+		"start": "tsup --config tsup-dev.config.ts --watch false",
+		"build": "tsup --config tsup-prod.config.ts"
+	},
+	"author": "Yourtich & Cleboost",
+	"license": "ISC",
+	"dependencies": {
+		"djs-core": "1.0.0",
+		"discord.js": "14.17.3",
+		"dotenv": "16.4.7"
+	},
+	"devDependencies": {
+		"tsup": "^8.3.5",
+		"typescript": "5.7.2"
+	}
 }
