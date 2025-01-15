@@ -1,3 +1,7 @@
 import { Config } from "djs-core";
 
-export default {} as Config;
+export default {
+    logger: {
+        logCmd:true
+    }
+} as Config;
