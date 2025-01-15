@@ -1,6 +1,10 @@
-node_modules
+# Projets 
+node_modules/
+dist/
+.env
+.dev/
+
+# IDE
 *.DS_store
-.idea
-dist
-prisma/client
-*.patch
+.idea/
+.vscode/
