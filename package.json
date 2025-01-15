@@ -1,22 +1,22 @@
 {
-	"name": "discord-handlerv14",
-	"version": "4.0.0",
-	"description": "Un handler pour bot discord, il est complet, rapide et customisable.",
-	"main": "dist/index.js",
-	"scripts": {
-		"dev": "tsup --config tsup-dev.config.ts",
-		"start": "tsup --config tsup-dev.config.ts --watch false",
-		"build": "tsup --config tsup-prod.config.ts"
-	},
-	"author": "Yourtich & Cleboost",
-	"license": "ISC",
-	"dependencies": {
-		"discord.js": "14.17.3",
-		"djs-core": "1.0.1",
-		"dotenv": "16.4.7"
-	},
-	"devDependencies": {
-		"tsup": "^8.3.5",
-		"typescript": "5.7.2"
-	}
+  "name": "discord-handlerv14",
+  "version": "2.1.2",
+  "description": "Un handler pour bot discord, il est complet, rapide et customisable.",
+  "main": "index.js",
+  "scripts": {
+	"dev": "nodemon index.js",
+	"start": "node index.js"
+  },
+  "author": "Yourtich & Cleboost",
+  "license": "ISC",
+  "dependencies": {
+	"@discordjs/opus": "^0.8.0",
+	"cli-color": "2.0.3",
+	"discord.js": "^14.11.0",
+	"dotenv": "16.0.3",
+	"mysql": "^2.18.1"
+  },
+  "devDependencies": {
+	"nodemon": "^3.0.1"
+  }
 }
