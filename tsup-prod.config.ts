@@ -7,12 +7,12 @@ export default defineConfig({
     outDir: "dist",
     splitting: false, 
     clean: true,
-    watch: true,
     minify: true,
     onSuccess: async () => {
         const packageJson = JSON.parse(fs.readFileSync("package.json", "utf-8"));
         packageJson.main = "index.js";
         delete packageJson.scripts.build;
+        delete packageJson.scripts.dev;
         packageJson.scripts.start = "node .";
         delete packageJson.devDependencies;
         fs.writeFileSync("dist/package.json", JSON.stringify(packageJson, null, 4));

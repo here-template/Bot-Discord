@@ -1,7 +1,7 @@
-import { defineConfig } from "tsup";
 import fs from "fs";
-import { exec } from "child_process";
-import { log } from "console";
+import { defineConfig } from "tsup";
+import { spawn } from "child_process";
+import path from "path";
 
 export default defineConfig({
 	format: ["cjs"],
@@ -11,5 +11,11 @@ export default defineConfig({
 	silent: false,
 	clean: true,
 	watch: ["src"],
-    onSuccess:"cp src/.env .dev/.env && cd .dev && node index.js",
+	onSuccess: async () => {
+		fs.copyFileSync("src/.env", ".dev/.env");
+		process.chdir(".dev");
+		const command = process.platform === "win32" ? "node" : "node";
+		const args = process.platform === "win32" ? ["."] : ["index.js"];
+		const child = spawn(command, args, { stdio: "inherit" });
+	}
 });
