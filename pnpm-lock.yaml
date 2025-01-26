@@ -12,8 +12,8 @@ importers:
         specifier: 14.17.3
         version: 14.17.3
       djs-core:
-        specifier: 1.2.4
-        version: 1.2.4(typescript@5.7.3)
+        specifier: 1.3.4
+        version: 1.3.4(typescript@5.7.3)
       dotenv:
         specifier: 16.4.7
         version: 16.4.7
@@ -454,8 +454,8 @@ packages:
     resolution: {integrity: sha512-8/j8udc3CU7dz3Eqch64UaSHoJtUT6IXK4da5ixjbav4NAXJicloWswD/iwn1ImZEMoAV3LscsdO0zhBh6H+0Q==}
     engines: {node: '>=18'}
 
-  djs-core@1.2.4:
-    resolution: {integrity: sha512-S/FqB9lnCJ5oeeDweOL5rG4dhEy2RV1evXTsxQDc1+tpD88VGHaboPphDzOb5BdQOb8ABCoyAo1sTh/uaZhW4Q==}
+  djs-core@1.3.4:
+    resolution: {integrity: sha512-FrEwkfDUPl5IVdxjMRbM2EzQg+SiHVH/xVfS2g2acgRTvQ5Pqr7JPtSfWmLhuYW46m4CWxvgqXzVPOrjideJXw==}
     engines: {node: '>=16.6.0'}
     hasBin: true
 
@@ -1141,7 +1141,7 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  djs-core@1.2.4(typescript@5.7.3):
+  djs-core@1.3.4(typescript@5.7.3):
     dependencies:
       chalk: 4.1.2
       chokidar: 4.0.3
