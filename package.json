@@ -4,19 +4,18 @@
 	"description": "Un handler pour bot discord, il est complet, rapide et customisable.",
 	"main": "dist/index.js",
 	"scripts": {
-		"dev": "tsup --config tsup-dev.config.ts",
-		"start": "tsup --config tsup-dev.config.ts --watch false",
-		"build": "tsup --config tsup-prod.config.ts"
+		"dev": "djs-core dev",
+		"start": "djs-core start",
+		"build": "djs-core build"
 	},
 	"author": "Yourtich & Cleboost",
 	"license": "ISC",
 	"dependencies": {
 		"discord.js": "14.17.3",
-		"djs-core": "1.1.2",
+		"djs-core": "1.2.4",
 		"dotenv": "16.4.7"
 	},
 	"devDependencies": {
-		"tsup": "^8.3.5",
 		"typescript": "5.7.3"
 	}
 }
