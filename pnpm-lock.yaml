@@ -19,8 +19,8 @@ importers:
         version: 16.4.7
     devDependencies:
       '@djs-core/cli':
-        specifier: 1.0.1
-        version: 1.0.1(@types/node@22.10.6)(typescript@5.7.3)
+        specifier: 1.1.1
+        version: 1.1.1(@types/node@22.10.6)(typescript@5.7.3)
       typescript:
         specifier: 5.7.3
         version: 5.7.3
@@ -55,12 +55,12 @@ packages:
     resolution: {integrity: sha512-QH5CAFe3wHDiedbO+EI3OOiyipwWd+Q6BdoFZUw/Wf2fw5Cv2fgU/9UEtJRmJa9RecI+TAhdGPadMaEIur5yJg==}
     engines: {node: '>=16.11.0'}
 
-  '@djs-core/builder@1.1.1':
-    resolution: {integrity: sha512-7PI3LMJBQnY1HD88ostVt80XbHSxpt/MoVtZz9Lamp4rCOlWj6ek4KM5v2G02LRURw/kwNesZtO3El2hkqyOEQ==}
+  '@djs-core/builder@1.2.2':
+    resolution: {integrity: sha512-DQrcUGaEzeLgOGEMb7XllnuZQ5/5MFiQ5Y8JkXS7G/Z3Myj/hBIw4z3g02Fx567Jyp/bHn0kAqSfYKySmtYKWA==}
     engines: {node: '>=16.6.0'}
 
-  '@djs-core/cli@1.0.1':
-    resolution: {integrity: sha512-1DH9RUC6nTarnergf0oKHKL5mDi5otSAEvP8ggszXoXCp+SYE87yrSyvtT8ByFmydteFJKs+HEJm1+/ao5acoA==}
+  '@djs-core/cli@1.1.1':
+    resolution: {integrity: sha512-5spaqCg6wSYygj6L64Ou6ZbnRTQ6nkXaX1qzBC3s9V0sSlxTvryJzHl/BFib3C5H4vkGOy7GfjpNE8CClWhHBw==}
     engines: {node: '>=16.6.0'}
     hasBin: true
 
@@ -1321,7 +1321,7 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  '@djs-core/builder@1.1.1(typescript@5.7.3)':
+  '@djs-core/builder@1.2.2(typescript@5.7.3)':
     dependencies:
       glob: 11.0.1
       javascript-obfuscator: 4.1.1
@@ -1336,9 +1336,9 @@ snapshots:
       - typescript
       - yaml
 
-  '@djs-core/cli@1.0.1(@types/node@22.10.6)(typescript@5.7.3)':
+  '@djs-core/cli@1.1.1(@types/node@22.10.6)(typescript@5.7.3)':
     dependencies:
-      '@djs-core/builder': 1.1.1(typescript@5.7.3)
+      '@djs-core/builder': 1.2.2(typescript@5.7.3)
       chalk: 4.1.2
       chokidar: 4.0.3
       commander: 13.1.0
