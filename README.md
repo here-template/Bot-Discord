@@ -55,9 +55,11 @@ This project includes Sqlite natively and exemples of usage in the commands. You
 - Buttons and commands can have categories: create a folder and place the file inside (see examples)
 - Debug mode enabled by default, configuration in `.env`
 
-## 🛠️ SubCommand
+## 🛠️ SubCommand :
+
 This projet allow you to create sub command like `/command subcommand`. To do it, you can check exemple in `src/interactions/commands/utils/handler.ts` and `src/interactions/commands/utils/handler/button.ts`
 As you can see, you need to create the regitred command where you define name of your command, description, default permission, sub command. In subfolder with same name of your command, you can create subcommand. Subcommand files need to have same name of the subcommand.
+
 ---
 
 ## 🤝 Contribution
