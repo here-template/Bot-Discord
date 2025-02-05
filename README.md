@@ -1,6 +1,6 @@
 # 🤖 Bot Discord.js v14
 
-This repository contains a bot template for `discord.js@v14`. The bot is designed with a handler to easily create commands, buttons, selections and other fun interactions.
+This repository contains a bot template for `discord.js@v14`. It use external handler (developped by cleboost `djs-core` ans some submodule). The bot is designed with a handler to easily create commands, buttons, selections and other fun interactions.
 
 ---
 
@@ -9,20 +9,21 @@ This repository contains a bot template for `discord.js@v14`. The bot is designe
 Before using this bot, make sure you have:
 
 - **Node.js (min v18)**: To develop and run the script.
-- **WebStorm IDEA (paid IDE)**: A recommended Javascript development environment for optimal compatibility with node.js and NPM. 🚀
-- **Alternative Javascript development environment**: If you prefer using another Javascript development environment, make sure it is compatible with node.js and NPM.
+- **Javascript IDE**: A development environment to edit the code like Visual Studio Code (free), WebStorm (paid).
 
 ## 🚀 Installation
 
 1. Clone this repository to your local system.
 2. Open the project in your development environment.
-3. Edit `.env` and `config.json` with your informations
-4. Install NPM package with `npm i` command
-5. Start bot with `npm start`
+4. Go to `src/` folder, it contains the main bot script.
+3. Edit `.env` with your bot token.
+4. Customize `config.ts` with your settings (optional).
+4. Install NPM package with `pnpm i` command (you can use `npm i` or `yarn` but `pnpm` is recommended).
+5. Start bot with `pnpm run start` (or `npm run start` or `yarn run start`).
 
 ## 🛠️ Build 
 
-1. Build the project with `npm run build`
+1. Build the project with `pnpm run build` (you can customize build options in build script in `package.json` for obfuscation, etc.)
 2. You can now run the bot with `node dist/index.js`
 3. If you use prisma, be sure to run `npx prisma generate` before building and copy the `prisma` & node_modules folders to the `dist` folder
 4. You can also get all content of the `dist` folder and put it in a zip file to deploy it on a server
@@ -36,8 +37,8 @@ This project includes Sqlite natively and exemples of usage in the commands. You
 ## 📜 Default commands available:
 
 - ~~📚 **/help** Dynamically generates help message with existing commands~~ (in redev)
-- ⛔ **/stop** Stops the bot *(admin command)*
-- 🧪 **/test** Empty command for testing purposes *(devOnly command)*
+- ~~⛔ **/stop** Stops the bot *(admin command)*~~
+- ~~🧪 **/test** Empty command for testing purposes *(devOnly command)*~~
 - 🏓 **/ping** Displays bot latency (in ms)
 - Example commands for various options
 
@@ -54,25 +55,9 @@ This project includes Sqlite natively and exemples of usage in the commands. You
 - Buttons and commands can have categories: create a folder and place the file inside (see examples)
 - Debug mode enabled by default, configuration in `.env`
 
-## 🛠️ Command Options :
-
-- ```userPermissions: [""]``` - Additional permissions required by the user *(default: ```sendMessages```)*
-- ```botPermissions: [""]``` - Additional permissions required by the bot *(default: ```sendMessages```)*
-- ```devOnly: true``` - *(default: ```false```)*
-- ```cooldown: 2``` - Time (in seconds) between 2 executions of the command, in seconds *(default: ```0s```)*
-- ```mp: true``` - If true, the command can be executed in DMs; if false, it can only be executed on a server *(default: ```false```)*
-
-## 🛠️ Command Group :
-
-- Allows you to group multiple commands under the same name, e.g., `/music on` and `/music off`
-- To do this, create a folder for the sub-commands and place the files inside like normal commands (they do not have access to command options explained above)
-- add ```subCommande: true``` as a parameter
-- and add another command file (this one without code, so no `runInteraction` function), with:
-  - The same name as the folder
-  - The parameter: ```commandeGroupe: true```
-  - And the parameter ```category: category```, the category you want the command to be in (leave "" if you want no category)
-  - It's in this command file that you can put command options
-
+## 🛠️ SubCommand
+This projet allow you to create sub command like `/command subcommand`. To do it, you can check exemple in `src/interactions/commands/utils/handler.ts` and `src/interactions/commands/utils/handler/button.ts`
+As you can see, you need to create the regitred command where you define name of your command, description, default permission, sub command. In subfolder with same name of your command, you can create subcommand. Subcommand files need to have same name of the subcommand.
 ---
 
 ## 🤝 Contribution
