@@ -11,7 +11,7 @@
 	"author": "Yourtich & Cleboost",
 	"license": "ISC",
 	"dependencies": {
-		"discord.js": "14.17.3",
+		"discord.js": "14.18.0",
 		"djs-core": "2.3.6",
 		"dotenv": "16.4.7"
 	},
