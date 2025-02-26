@@ -1,10 +1,11 @@
 import { Config } from "djs-core";
 
-export default {
-    logger: {
-        logCmd:true,
-        logBtn:true,
-        logEvent:true,
-        logSelect:true,
-    }
-} as Config;
+export default new Config({
+	logger: {
+		logBtn: true,
+		logCmd: true,
+		logEvent: true,
+		logModal: true,
+		logSelect: true,
+	},
+});
