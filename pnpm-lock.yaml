@@ -12,8 +12,8 @@ importers:
         specifier: 14.18.0
         version: 14.18.0
       djs-core:
-        specifier: 2.4.7
-        version: 2.4.7
+        specifier: 4.0.0
+        version: 4.0.0
       dotenv:
         specifier: 16.4.7
         version: 16.4.7
@@ -635,9 +635,9 @@ packages:
     resolution: {integrity: sha512-SvU5kVUvwunQhN2/+0t55QW/1EHfB1lp0TtLZUSXVHDmyHTrdOj5LRKdR0zLcybaA15F+NtdWuWmGOX9lE+CAw==}
     engines: {node: '>=18'}
 
-  djs-core@2.4.7:
-    resolution: {integrity: sha512-+RIIU3OJTOrXGh7XHcI9f1NoLwnIdcyE7Qz1FtgQWsfN2cxqptX4IrYNFbsyZpCBy8fs+3pSmt4PmlD+HauyQw==}
-    engines: {node: '>=16.6.0'}
+  djs-core@4.0.0:
+    resolution: {integrity: sha512-0GPh05LCX+eQiMGsxCZKoJB69x39PfMxpCDkJNE2egjbYPfp/zM4GeyP58i6FtBpZq2gKbqjVpi0gLeq2jjpsQ==}
+    engines: {node: '>=18.6.0'}
 
   dotenv@16.4.7:
     resolution: {integrity: sha512-47qPchRCykZC03FhkYAhrvwU4xDBFIj1QPqaarj6mdM/hgUzfPHcpkHJOn3mJAufFeeAxAzeGsr5X0M4k6fLZQ==}
@@ -1824,7 +1824,7 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  djs-core@2.4.7:
+  djs-core@4.0.0:
     dependencies:
       chalk: 4.1.2
       discord.js: 14.18.0
