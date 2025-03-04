@@ -17,7 +17,7 @@
 	},
 	"devDependencies": {
 		"@djs-core/cli": "2.0.0",
-		"typescript": "5.7.3"
+		"typescript": "5.8.2"
 	},
 	"packageManager": "pnpm@10.5.1+sha512.c424c076bd25c1a5b188c37bb1ca56cc1e136fbf530d98bcb3289982a08fd25527b8c9c4ec113be5e3393c39af04521dd647bcf1d0801eaf8ac6a7b14da313af",
 	"pnpm": {
