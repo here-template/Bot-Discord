@@ -20,10 +20,10 @@ importers:
     devDependencies:
       '@djs-core/cli':
         specifier: 2.0.4
-        version: 2.0.4(@types/node@22.13.5)(typescript@5.8.2)
+        version: 2.0.4(@types/node@22.13.5)(typescript@5.8.3)
       typescript:
-        specifier: 5.8.2
-        version: 5.8.2
+        specifier: 5.8.3
+        version: 5.8.3
 
 packages:
 
@@ -1259,8 +1259,8 @@ packages:
     resolution: {integrity: sha512-t0rzBq87m3fVcduHDUFhKmyyX+9eo6WQjZvf51Ea/M0Q7+T374Jp1aUiyUl0GKxp8M/OETVHSDvmkyPgvX+X2w==}
     engines: {node: '>=10'}
 
-  typescript@5.8.2:
-    resolution: {integrity: sha512-aJn6wq13/afZp/jT9QZmwEjDqqvSGp1VT5GVg+f/t6/oVyrgXM6BY1h9BRh/O5p3PlUPAe+WuiEZOmb/49RqoQ==}
+  typescript@5.8.3:
+    resolution: {integrity: sha512-p1diW6TqL9L07nNxvRMM7hMMw4c5XOo/1ibL4aAIGmSAt9slTE1Xgw5KWuof2uTOvCg9BY7ZRi+GaF+7sfgPeQ==}
     engines: {node: '>=14.17'}
     hasBin: true
 
@@ -1380,11 +1380,11 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  '@djs-core/builder@2.0.1(typescript@5.8.2)':
+  '@djs-core/builder@2.0.1(typescript@5.8.3)':
     dependencies:
       glob: 11.0.1
       javascript-obfuscator: 4.1.1
-      tsup: 8.4.0(typescript@5.8.2)
+      tsup: 8.4.0(typescript@5.8.3)
     transitivePeerDependencies:
       - '@microsoft/api-extractor'
       - '@swc/core'
@@ -1395,9 +1395,9 @@ snapshots:
       - typescript
       - yaml
 
-  '@djs-core/cli@2.0.4(@types/node@22.13.5)(typescript@5.8.2)':
+  '@djs-core/cli@2.0.4(@types/node@22.13.5)(typescript@5.8.3)':
     dependencies:
-      '@djs-core/builder': 2.0.1(typescript@5.8.2)
+      '@djs-core/builder': 2.0.1(typescript@5.8.3)
       chalk: 4.1.2
       chokidar: 4.0.3
       commander: 13.1.0
@@ -2485,7 +2485,7 @@ snapshots:
 
   tslib@2.8.1: {}
 
-  tsup@8.4.0(typescript@5.8.2):
+  tsup@8.4.0(typescript@5.8.3):
     dependencies:
       bundle-require: 5.1.0(esbuild@0.25.0)
       cac: 6.7.14
@@ -2504,7 +2504,7 @@ snapshots:
       tinyglobby: 0.2.12
       tree-kill: 1.2.2
     optionalDependencies:
-      typescript: 5.8.2
+      typescript: 5.8.3
     transitivePeerDependencies:
       - jiti
       - supports-color
@@ -2517,7 +2517,7 @@ snapshots:
 
   type-fest@0.21.3: {}
 
-  typescript@5.8.2: {}
+  typescript@5.8.3: {}
 
   undici-types@6.20.0: {}
 
