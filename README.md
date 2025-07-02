@@ -40,7 +40,37 @@ This project includes Sqlite natively and exemples of usage in the commands. You
 - ~~⛔ **/stop** Stops the bot *(admin command)*~~
 - ~~🧪 **/test** Empty command for testing purposes *(devOnly command)*~~
 - 🏓 **/ping** Displays bot latency (in ms)
+- 🛠️ **/middleware-demo** Interactive demonstration of middleware functionality
 - Example commands for various options
+
+---
+
+## 🔧 Middleware System
+
+This bot includes a comprehensive middleware system that allows you to intercept and process interactions before they reach their handlers. The middleware demo showcases:
+
+### Available Middlewares
+- **Analytics Middleware**: Logs and tracks interaction statistics
+- **Cooldown Middleware**: Implements rate limiting to prevent spam
+- **Command Middleware**: Validates permissions and blocks DM commands
+- **Button Middleware**: Controls access to admin-only buttons
+- **Modal Middleware**: Validates form submissions
+- **Select Middleware**: Manages select menu permissions and validation
+
+### Testing Middlewares
+Use the `/middleware-demo` command to interactively test all middleware types:
+- Try the normal and admin-only buttons
+- Test the select menu with different permission levels
+- Observe console logs showing middleware activity
+- Experience cooldown protection by using commands quickly
+
+### Extending Middlewares
+The middleware system is easily extensible. Check `src/middlewares/` for examples and documentation on creating custom middlewares for:
+- Database integration
+- Advanced permission systems
+- Content filtering
+- Audit logging
+- Custom validation logic
 
 ---
 
