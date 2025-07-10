@@ -40,6 +40,7 @@ This project includes Sqlite natively and exemples of usage in the commands. You
 - ~~⛔ **/stop** Stops the bot *(admin command)*~~
 - ~~🧪 **/test** Empty command for testing purposes *(devOnly command)*~~
 - 🏓 **/ping** Displays bot latency (in ms)
+- 🔍 **/autocomplete** Demo command showcasing autocomplete functionality
 - Example commands for various options
 
 ---
@@ -59,6 +60,15 @@ This project includes Sqlite natively and exemples of usage in the commands. You
 
 This projet allow you to create sub command like `/command subcommand`. To do it, you can check exemple in `src/interactions/commands/utils/handler.ts` and `src/interactions/commands/utils/handler/button.ts`
 As you can see, you need to create the regitred command where you define name of your command, description, default permission, sub command. In subfolder with same name of your command, you can create subcommand. Subcommand files need to have same name of the subcommand.
+
+---
+
+## 🔍 AutoComplete :
+
+This project includes an autocomplete demo command that shows how to implement interactive command options. Check the example in `src/interactions/commands/utils/autocomplete.ts` to see how to:
+- Add string options with `.setAutocomplete(true)`
+- Handle autocomplete interactions with `.autoComplete()` method
+- Provide dynamic suggestions to users as they type
 
 ---
 
