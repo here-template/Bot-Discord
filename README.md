@@ -8,40 +8,27 @@ This repository contains a bot template for `discord.js@v14`. It use external ha
 
 Before using this bot, make sure you have:
 
-- **Node.js (min v18)**: To develop and run the script.
-- **Javascript IDE**: A development environment to edit the code like Visual Studio Code (free), WebStorm (paid).
+- **Bun.js (min v18)**: To run bot. (Djs-core is not compatible with Node.js)
 
 ## 🚀 Installation
 
 1. Clone this repository to your local system.
-2. Open the project in your development environment.
-4. Go to `src/` folder, it contains the main bot script.
-3. Edit `.env` with your bot token.
-4. Customize `config.ts` with your settings (optional).
-4. Install NPM package with `pnpm i` command (you can use `npm i` or `yarn` but `pnpm` is recommended).
-5. Start bot with `pnpm run start` (or `npm run start` or `yarn run start`).
+2. Open the project in your IDE.
+3. Install dependencies with `bun i` command.
+4. Start bot with `bun start`.
 
 ## 🛠️ Build 
 
-1. Build the project with `pnpm run build` (you can customize build options in build script in `package.json` for obfuscation, etc.)
-2. You can now run the bot with `node dist/index.js`
-3. If you use prisma, be sure to run `npx prisma generate` before building and copy the `prisma` & node_modules folders to the `dist` folder
-4. You can also get all content of the `dist` folder and put it in a zip file to deploy it on a server
+1. Build the project with `bun run build`
+2. You can now run the bot with `bun dist/index.js`
 
 ---
 
-## ⚙️ Included Sqlite native
-
-This project includes Sqlite natively and exemples of usage in the commands. You can use it to store data, like user's money, server's settings, etc.
-
 ## 📜 Default commands available:
 
-- ~~📚 **/help** Dynamically generates help message with existing commands~~ (in redev)
-- ~~⛔ **/stop** Stops the bot *(admin command)*~~
-- ~~🧪 **/test** Empty command for testing purposes *(devOnly command)*~~
 - 🏓 **/ping** Displays bot latency (in ms)
 - 🔍 **/autocomplete** Demo command showcasing autocomplete functionality
-- Example commands for various options
+- Example commands for various options (need update of djs-core but planned)
 
 ---
 

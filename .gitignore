@@ -2,9 +2,8 @@
 node_modules/
 dist/
 .env
-.dev/
+.djscore/
 
 # IDE
 *.DS_store
 .idea/
-.vscode/

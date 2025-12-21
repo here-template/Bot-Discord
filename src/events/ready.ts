@@ -1,8 +1,11 @@
-import { Events } from "discord.js";
-import { EventListner } from "djs-core";
+import { EventLister } from "@djs-core/runtime";
+import { ActivityType, Events } from "discord.js";
 
-export default new EventListner()
-.setEvent(Events.ClientReady)
-.run((client) => {
-    console.log("This is a event handler demo, your bot is ready!");
-});
+export default new EventLister()
+	.event(Events.ClientReady)
+	.run(async (client) => {
+		return client.user.setActivity({
+			name: "djs-core <3",
+			type: ActivityType.Custom,
+		});
+	});
