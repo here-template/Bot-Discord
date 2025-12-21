@@ -19,6 +19,6 @@
 	"devDependencies": {
 		"@biomejs/biome": "2.3.10",
 		"@djs-core/dev": "^1.1.4",
-		"typescript": "5.8.3"
+		"typescript": "5.9.3"
 	}
 }
