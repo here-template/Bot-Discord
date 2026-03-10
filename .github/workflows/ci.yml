@@ -17,3 +17,14 @@ jobs:
 
       - run: bun i
       - run: bun check
+  build:
+    concurrency:
+      group: build-${{ github.ref }}
+      cancel-in-progress: true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+
+      - run: bun i
+      - run: bun build
