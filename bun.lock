@@ -5,7 +5,7 @@
     "": {
       "name": "discord-handlerv14",
       "dependencies": {
-        "@djs-core/runtime": "^1.7.0",
+        "@djs-core/runtime": "^1.10.0",
         "discord.js": "^14.25.1",
       },
       "devDependencies": {
@@ -52,7 +52,7 @@
 
     "@djs-core/dev": ["@djs-core/dev@5.1.0", "", { "dependencies": { "@clack/prompts": "^1.0.0", "@djs-core/runtime": "1.7.0", "cac": "^7.0.0", "chokidar": "^5.0.0", "picocolors": "^1.1.1" }, "peerDependencies": { "discord.js": "^14.25.1" }, "bin": { "djs-core": "dist/index.js" } }, "sha512-1fbMMUWX93/uFSIoDca7CQGGbPHktB5QAe3tmxs7hemSOeV/qAy4G/gmvccVRAEWL79MujlUBaTyrxofb8pJIQ=="],
 
-    "@djs-core/runtime": ["@djs-core/runtime@1.7.0", "", { "dependencies": { "cron": "^4.4.0", "discord.js": "^14.25.1" } }, "sha512-Rph0wfBGgNm+elaWp8A/I1CRm9ps8JGizXPV5zfhaywwgSHeIJM7MXeK2kTk/WeFAf9miQTWWgcWLzU1sjJSTA=="],
+    "@djs-core/runtime": ["@djs-core/runtime@1.10.0", "", { "dependencies": { "cron": "^4.4.0", "discord.js": "^14.25.1" } }, "sha512-s3Ctw1jO7qi76AVd3OLYFQPIRzp1dcFAj2XnFEWQPEW1SnagRYXGM5UB1ECaXj8JH2qOr5hCDZB68bB+ZzcH/g=="],
 
     "@sapphire/async-queue": ["@sapphire/async-queue@1.5.5", "", {}, "sha512-cvGzxbba6sav2zZkH8GPf2oGk9yYoD5qrNWdu9fRehifgnFZJMV+nuy2nON2roRO4yQQ+v7MK/Pktl/HgfsUXg=="],
 
@@ -115,5 +115,7 @@
     "@discordjs/ws/@discordjs/util": ["@discordjs/util@1.1.1", "", {}, "sha512-eddz6UnOBEB1oITPinyrB2Pttej49M9FZQY8NxgEvc3tq6ZICZ19m70RsmzRdDHk80O9NoYN/25AqJl8vPVf/g=="],
 
     "@discordjs/ws/discord-api-types": ["discord-api-types@0.38.14", "", {}, "sha512-5qknrPxvIzAiX2tDb7dB55A4ydb/nCKxhlO48RrMNeyEGsBgk/88qIAsUm7K7nDnNkkOgJYt/wufybEPYWRMJQ=="],
+
+    "@djs-core/dev/@djs-core/runtime": ["@djs-core/runtime@1.7.0", "", { "dependencies": { "cron": "^4.4.0", "discord.js": "^14.25.1" } }, "sha512-Rph0wfBGgNm+elaWp8A/I1CRm9ps8JGizXPV5zfhaywwgSHeIJM7MXeK2kTk/WeFAf9miQTWWgcWLzU1sjJSTA=="],
   }
 }
