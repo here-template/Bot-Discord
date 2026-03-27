@@ -10,7 +10,7 @@
       },
       "devDependencies": {
         "@biomejs/biome": "2.4.7",
-        "@djs-core/dev": "^5.1.0",
+        "@djs-core/dev": "^5.2.2",
         "typescript": "6.0.2",
       },
     },
@@ -50,7 +50,7 @@
 
     "@discordjs/ws": ["@discordjs/ws@1.2.3", "", { "dependencies": { "@discordjs/collection": "^2.1.0", "@discordjs/rest": "^2.5.1", "@discordjs/util": "^1.1.0", "@sapphire/async-queue": "^1.5.2", "@types/ws": "^8.5.10", "@vladfrangu/async_event_emitter": "^2.2.4", "discord-api-types": "^0.38.1", "tslib": "^2.6.2", "ws": "^8.17.0" } }, "sha512-wPlQDxEmlDg5IxhJPuxXr3Vy9AjYq5xCvFWGJyD7w7Np8ZGu+Mc+97LCoEc/+AYCo2IDpKioiH0/c/mj5ZR9Uw=="],
 
-    "@djs-core/dev": ["@djs-core/dev@5.1.0", "", { "dependencies": { "@clack/prompts": "^1.0.0", "@djs-core/runtime": "1.7.0", "cac": "^7.0.0", "chokidar": "^5.0.0", "picocolors": "^1.1.1" }, "peerDependencies": { "discord.js": "^14.25.1" }, "bin": { "djs-core": "dist/index.js" } }, "sha512-1fbMMUWX93/uFSIoDca7CQGGbPHktB5QAe3tmxs7hemSOeV/qAy4G/gmvccVRAEWL79MujlUBaTyrxofb8pJIQ=="],
+    "@djs-core/dev": ["@djs-core/dev@5.2.2", "", { "dependencies": { "@clack/prompts": "^1.1.0", "@djs-core/runtime": "1.10.0", "cac": "^7.0.0", "chokidar": "^5.0.0", "picocolors": "^1.1.1" }, "peerDependencies": { "discord.js": "^14.25.1" }, "bin": { "djs-core": "dist/index.js" } }, "sha512-FnYoJRA7vEcs4g6jCbbj/UknEgusqZfsYsfdJSW7nbQfZb8LClgW8muvbgd+XVtQa90U+9wwUySfHzbkJBX4WQ=="],
 
     "@djs-core/runtime": ["@djs-core/runtime@1.10.0", "", { "dependencies": { "cron": "^4.4.0", "discord.js": "^14.25.1" } }, "sha512-s3Ctw1jO7qi76AVd3OLYFQPIRzp1dcFAj2XnFEWQPEW1SnagRYXGM5UB1ECaXj8JH2qOr5hCDZB68bB+ZzcH/g=="],
 
@@ -115,7 +115,5 @@
     "@discordjs/ws/@discordjs/util": ["@discordjs/util@1.1.1", "", {}, "sha512-eddz6UnOBEB1oITPinyrB2Pttej49M9FZQY8NxgEvc3tq6ZICZ19m70RsmzRdDHk80O9NoYN/25AqJl8vPVf/g=="],
 
     "@discordjs/ws/discord-api-types": ["discord-api-types@0.38.14", "", {}, "sha512-5qknrPxvIzAiX2tDb7dB55A4ydb/nCKxhlO48RrMNeyEGsBgk/88qIAsUm7K7nDnNkkOgJYt/wufybEPYWRMJQ=="],
-
-    "@djs-core/dev/@djs-core/runtime": ["@djs-core/runtime@1.7.0", "", { "dependencies": { "cron": "^4.4.0", "discord.js": "^14.25.1" } }, "sha512-Rph0wfBGgNm+elaWp8A/I1CRm9ps8JGizXPV5zfhaywwgSHeIJM7MXeK2kTk/WeFAf9miQTWWgcWLzU1sjJSTA=="],
   }
 }
