@@ -5,7 +5,7 @@
     "": {
       "name": "discord-handlerv14",
       "dependencies": {
-        "@djs-core/runtime": "^1.10.0",
+        "@djs-core/runtime": "^1.12.0",
         "discord.js": "^14.26.4",
       },
       "devDependencies": {
@@ -52,7 +52,7 @@
 
     "@djs-core/dev": ["@djs-core/dev@5.1.0", "", { "dependencies": { "@clack/prompts": "^1.0.0", "@djs-core/runtime": "1.7.0", "cac": "^7.0.0", "chokidar": "^5.0.0", "picocolors": "^1.1.1" }, "peerDependencies": { "discord.js": "^14.25.1" }, "bin": { "djs-core": "dist/index.js" } }, "sha512-1fbMMUWX93/uFSIoDca7CQGGbPHktB5QAe3tmxs7hemSOeV/qAy4G/gmvccVRAEWL79MujlUBaTyrxofb8pJIQ=="],
 
-    "@djs-core/runtime": ["@djs-core/runtime@1.10.0", "", { "dependencies": { "cron": "^4.4.0", "discord.js": "^14.25.1" } }, "sha512-s3Ctw1jO7qi76AVd3OLYFQPIRzp1dcFAj2XnFEWQPEW1SnagRYXGM5UB1ECaXj8JH2qOr5hCDZB68bB+ZzcH/g=="],
+    "@djs-core/runtime": ["@djs-core/runtime@1.12.0", "", { "dependencies": { "cron": "4.4.0", "discord.js": "14.25.1" } }, "sha512-2+xgwB1NEOV6W51nBC8ULmpA0Wx867br36EdsXlJfcl4t3GCOaYd9ydGMj3t03baQo49zSCD4Dp/O+BxmscsqQ=="],
 
     "@sapphire/async-queue": ["@sapphire/async-queue@1.5.5", "", {}, "sha512-cvGzxbba6sav2zZkH8GPf2oGk9yYoD5qrNWdu9fRehifgnFZJMV+nuy2nON2roRO4yQQ+v7MK/Pktl/HgfsUXg=="],
 
