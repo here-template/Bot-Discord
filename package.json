@@ -13,7 +13,7 @@
 	"author": "Yourtich & Cleboost",
 	"license": "ISC",
 	"dependencies": {
-		"@djs-core/runtime": "^1.10.0",
+		"@djs-core/runtime": "^1.13.1",
 		"discord.js": "^14.26.5"
 	},
 	"devDependencies": {
