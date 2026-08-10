@@ -14,7 +14,7 @@
 	"license": "ISC",
 	"dependencies": {
 		"@djs-core/runtime": "^1.13.1",
-		"discord.js": "^14.26.5"
+		"discord.js": "^14.27.0"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.5.3",
